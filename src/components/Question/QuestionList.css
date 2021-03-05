@@ -1,0 +1,42 @@
+.ql-heading{
+text-align: center;
+margin-top: 40px;
+margin-bottom: 40px;
+}
+.prob-container{
+margin-left: auto;
+margin-right: auto;
+padding-left: 100px;
+padding-right: 100px;
+}
+.prob-name{
+margin-top: 20px;
+text-decoration: underline;
+}
+.prob-input-head{
+margin-top: 20px;
+}
+
+.prob-stmnt{
+font-size: 1.1rem;
+margin-top: 40px;
+padding-left: 40px;
+padding-right: 40px;
+}
+.prob-input{
+font-size: 1.1rem;
+
+      margin-top: 20px;
+      padding-left: 40px;
+      padding-right: 40px;
+
+}
+
+.prob-btn{
+background-color: #E7E1FB!important;
+border-color: #E7E1FB!important;
+margin-top: 20px;
+margin-bottom: 20px;
+color: #440a67!important;
+font-size: 1.2rem;
+}
