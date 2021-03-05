@@ -7,7 +7,7 @@ import Footer from './components/Footer.js';
 import ScrollToTop from './components/StTop.js';
 import Q1 from './components/Question/AllQuestions/Q1.js';
 
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 class App extends React.Component {
 
