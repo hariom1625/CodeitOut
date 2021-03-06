@@ -12,7 +12,33 @@ width:150px;
 .heading{
 font-size:20px;
 }
+.correct{
+color:#28df99;
+font-size: 1.8rem;
+}
+.wrong{
+color:#e40017;
+font-size: 1.8rem;
 
+}
+.verdict-text{
+font-family: 'Roboto';
+font-size: 1.8rem;
+margin-left: 10px;
+}
+.verdict-def{
+font-family: 'Roboto';
+font-size: 2rem;
+margin-left: 1px;
+}
+.verdict-cont{
+border-style: solid;
+margin-right: 70%;
+background-color:#FBFBFD;
+width:400px;
+line-height: 100px;
+height: 100px;
+}
 .source{
 background-color: #0f1123;
 color:#f5f4f4;
