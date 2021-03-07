@@ -48,45 +48,56 @@ this.setState({customLink:id});
 
       }
       render() {
-            if(this.state.loaded){
-            return(
-      (<div className="container-fluid">
+// const q=1;
 
-                        <h1 className="ql-heading">
-                              Question List
+if(this.state.loaded){
+return(
+(<div className="container-fluid">
 
-                        </h1>
+                  <h1 className="ql-heading">
+                        Question List
+
+                  </h1>
 
 {
-      this.state.questions.map((question) => (
+this.state.questions.map((question) => (
 
-                        <div key={question.id} className="container prob-container">
-                              <div class="list-group">
-                                <button type="button" onClick = {(event) => {this.onHandleClick(question.id)}} className=" prob-btn list-group-item list-group-item-action active" aria-current="true">
-                                {question.problemName}
-                                </button>
-
-                              </div>
-
+                  <div key={question.id} className="container prob-container">
+                        <div class="list-group">
+                          <button type="button" onClick = {(event) => {this.onHandleClick(question.id)}} className=" prob-btn list-group-item list-group-item-action active" aria-current="true">
+                          {question.problemName}
+                          </button>
 
                         </div>
-                        )
-
-                        )}
 
 
-                        else{
-                        if(!this.state.loaded){
-                        return (
+</div>
+))}
 
-                        <div className="loader"><Loader message="Loading"/></div>
-                        )
-                        }
-                        }
+<Q1 qu ={this.state.customLink}/>
 
-                        }
 
-                        }
+
+</div>
+)
+
+)}
+
+
+else{
+if(!this.state.loaded){
+return (
+
+<div className="loader"><Loader message="Loading"/></div>
+)
+}
+}
+
+}
+
+}
+
+
 
 
 export default QuestionList;

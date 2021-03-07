@@ -50,7 +50,7 @@ class Navbar extends Component {
                             window.location.href="/";}}>Home</li>
                         </Link>
 
-                        <Link to="/events" id="navLink">
+                        <Link to="/questionlist" id="navLink">
                         <hr className="d-md-none"></hr> <li className={(this.state.active==='Questions List')?"nav-item mx-3 px-3 active":"nav-item mx-3 px-3"} onClick={() =>{ this.changed();
                             window.location.href="/questionlist";}}>Questions List</li>
                         </Link>
