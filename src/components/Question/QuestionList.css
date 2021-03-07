@@ -20,7 +20,26 @@ margin-top: 20px;
 font-family: 'Roboto';
 
 }
+.loader{
+ /* display: flex;
+align-items: center; justify-content: center;  */
+padding-left: auto;
+padding-right: auto;
+opacity: 1;
+height: 100%;
+}
+.loading-text{
+font-size: 1.2rem;
+text-align: left;
+/* margin-left: -25px;
+margin-top: 25px; */
+margin-left: 0.6vw;
+margin-top: 15vh;
+font-weight: 800;
+color: #440a67;
+font-family: 'Roboto';
 
+}
 .prob-stmnt{
 font-size: 1.1rem;
 margin-top: 40px;

@@ -1,6 +1,7 @@
 import React from 'react';
 import './QuestionList.css';
 import axios from 'axios';
+import Loader from '../Loader/Loader.js';
 // import Q2 from './AllQuestions/Q2.js';
 import Q1 from './AllQuestions/Q1.js';
 
@@ -29,6 +30,12 @@ class QuestionList extends React.Component {
 
             axios.get("https://codeitoutserver.herokuapp.com/questionlist.json").then((res) => {
                   this.setState({questions: res.data});
+                  if(res.data>0){
+            this.setState({loaded:true})
+            }
+            else{
+            this.setState({loaded:true})
+            }
             });
 
 
@@ -41,8 +48,8 @@ this.setState({customLink:id});
 
       }
       render() {
-// const q=1;
-return(
+            if(this.state.loaded){
+            return(
       (<div className="container-fluid">
 
                         <h1 className="ql-heading">
@@ -62,18 +69,24 @@ return(
                               </div>
 
 
-</div>
-))}
+                        </div>
+                        )
 
-<Q1 qu ={this.state.customLink}/>
+                        )}
 
 
+                        else{
+                        if(!this.state.loaded){
+                        return (
 
-</div>
-))}
+                        <div className="loader"><Loader message="Loading"/></div>
+                        )
+                        }
+                        }
 
-}
+                        }
 
+                        }
 
 
 export default QuestionList;
