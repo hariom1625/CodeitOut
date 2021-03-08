@@ -279,6 +279,9 @@ icon:"far fa-check-circle correct fa-3x"
                                     <span class="badge heading-2 bg-secondary">Code
                                           <i class="fas source-logo fa-server"></i>
                                     </span>
+                                    <span className="badge heading-2 bg-secondary prob-name-com">{this.props.problemName}
+
+                                    </span>
                               </label>
                               <MonacoEditor className="monaco" width="650" height="500" language="cpp" theme="vs-dark" options={options} value={this.state.input} onChange={this.onChange} editorDidMount={this.editorDidMount}/>
 

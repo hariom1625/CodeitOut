@@ -32,12 +32,19 @@ font-size: 2rem;
 margin-left: 1px;
 }
 .verdict-cont{
-border-style: solid;
-margin-right: 70%;
-background-color:#FBFBFD;
-width:400px;
-line-height: 100px;
-height: 100px;
+      border-style: solid;
+      margin-right: 70%;
+      background-color:#FBFBFD;
+      width:400px;
+      margin-left: 3vw;
+      line-height: 100px;
+      height: 100px;
+}
+.prob-name-com{
+
+margin-left: 60px;
+font-size: 1.7rem;
+
 }
 .source{
 background-color: #0f1123;
