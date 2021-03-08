@@ -280,7 +280,7 @@ icon:"far fa-check-circle correct fa-3x"
                                           <i class="fas source-logo fa-server"></i>
                                     </span>
                               </label>
-                              <MonacoEditor className="monaco" width="650" height="500" language={this.state.language} theme="vs-dark" options={options} value={this.state.input} onChange={this.onChange} editorDidMount={this.editorDidMount}/>
+                              <MonacoEditor className="monaco" width="650" height="500" language="cpp" theme="vs-dark" options={options} value={this.state.input} onChange={this.onChange} editorDidMount={this.editorDidMount}/>
 
 
                                     <button type="submit" className="btn btn-dark run-btn btn-lg" onClick={this.run}>

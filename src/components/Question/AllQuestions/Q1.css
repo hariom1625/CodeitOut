@@ -1,0 +1,49 @@
+.prob-input-head{
+margin-top: 20px;
+font-family: 'Roboto';
+
+}
+
+.prob-stmnt{
+font-size: 1.1rem;
+margin-top: 20px;
+padding-left: 40px;
+padding-right: 40px;
+font-family: 'Roboto';
+}
+.prob-input{
+font-size: 1.1rem;
+
+      margin-top: 20px;
+      padding-left: 40px;
+      padding-right: 40px;
+      font-family: 'Roboto';
+
+
+}
+
+.prob-time{
+margin-top:60px;
+}
+.prob-container{
+margin-left: auto;
+margin-right: auto;
+padding-left: 100px;
+padding-right: 100px;
+}
+.prob-head-q1{
+margin-top: 20px;
+margin-bottom: 10vh;
+text-decoration: underline;
+text-align:center;
+font-family: 'Roboto';
+
+}
+.prob-name-q1{
+font-family: 'Roboto';
+
+}
+
+.Q1 {
+margin-top: 10vh;
+}

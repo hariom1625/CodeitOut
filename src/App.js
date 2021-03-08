@@ -4,6 +4,7 @@ import Home from './components/Home.js';
 import Navbar from './components/Navbar/Navbar.js';
 import QuestionList from './components/Question/QuestionList.js';
 import Footer from './components/Footer.js';
+import Resources from './components/Resources.js';
 import ScrollToTop from './components/StTop.js';
 import Q1 from './components/Question/AllQuestions/Q1.js';
 
@@ -20,8 +21,10 @@ class App extends React.Component {
                               <Switch>
                                     <Route exact path="/" component ={ScrollToTop(Home)}/>
 
-                                    <Route  path="/QuestionList" component={ScrollToTop(QuestionList)}/>
-                                          <Route  path="/Q1" component={ScrollToTop(Q1)}/>
+                                          <Route exact path="/QuestionList" component={ScrollToTop(QuestionList)}/>
+                                          <Route exact path="/Questionlist/:slug" urlString={`/QuestionList/:slug`} component={ScrollToTop(Q1)}/>
+                                                <Route exact path="/Resources" component={ScrollToTop(Resources)}/>
+
 
                               </Switch>
 

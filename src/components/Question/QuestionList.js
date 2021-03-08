@@ -7,8 +7,7 @@ import Q1 from './AllQuestions/Q1.js';
 
 // import ScrollToTop from '../StTop.js';
 
-// import { Link} from 'react-router-dom';
-// import { Link} from 'react-router-dom';
+import { Link} from 'react-router-dom';
 
 // import styled from 'styled-components';
 
@@ -28,14 +27,16 @@ class QuestionList extends React.Component {
 
       componentDidMount() {
 
-            axios.get("https://codeitoutserver.herokuapp.com/questionlist.json").then((res) => {
+            axios.get("https://codeitoutserver.herokuapp.com/api/question").then((res) => {
                   this.setState({questions: res.data});
-                  if(res.data>0){
-            this.setState({loaded:true})
-            }
-            else{
-            this.setState({loaded:true})
-            }
+
+
+                                    if(res.data>0){
+                  this.setState({loaded:true})
+                  }
+                  else{
+                  this.setState({loaded:true})
+                  }
             });
 
 
@@ -44,7 +45,9 @@ class QuestionList extends React.Component {
 
       onHandleClick = (event)=> {
 const id = event;
+// console.log(id);
 this.setState({customLink:id});
+<Q1 qu ={id}/>
 
       }
       render() {
@@ -52,29 +55,28 @@ this.setState({customLink:id});
 
 if(this.state.loaded){
 return(
-(<div className="container-fluid">
+      (<div className="container-fluid">
 
-                  <h1 className="ql-heading">
-                        Question List
+                        <h1 className="ql-heading">
+                              Question List
 
-                  </h1>
+                        </h1>
 
 {
-this.state.questions.map((question) => (
+      this.state.questions.map((question) => (
 
-                  <div key={question.id} className="container prob-container">
-                        <div class="list-group">
-                          <button type="button" onClick = {(event) => {this.onHandleClick(question.id)}} className=" prob-btn list-group-item list-group-item-action active" aria-current="true">
-                          {question.problemName}
-                          </button>
-
-                        </div>
+                        <div key={question.id} className="container prob-container">
+                              <div class="list-group">
+<Link to={`/questionlist/${question.problemCode}`}>
+                                <button type="button" onClick = {(event) => {this.onHandleClick(question.id)}} className=" prob-btn list-group-item list-group-item-action active" aria-current="true">
+                                {question.problemName}
+                                </button>
+</Link>
+                              </div>
 
 
 </div>
 ))}
-
-<Q1 qu ={this.state.customLink}/>
 
 
 
@@ -96,7 +98,6 @@ return (
 }
 
 }
-
 
 
 
