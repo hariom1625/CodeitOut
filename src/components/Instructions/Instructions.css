@@ -1,0 +1,23 @@
+.instruct-head{
+text-decoration: underline;
+font-family: 'Roboto';
+margin-top: 20px;
+margin-left: 25px;
+}
+
+.instruct-head-1{
+font-family: 'Roboto';
+margin-top: 40px;
+margin-left: 25px;
+}
+
+.instruct-pt{
+margin-top: 20px;
+margin-left: 40px;
+font-size: 1.1rem;
+font-family: 'Roboto';
+}
+.instruct-gist{
+margin-top: 20px;
+width:400px!important;
+}

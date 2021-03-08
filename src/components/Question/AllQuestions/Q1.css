@@ -47,3 +47,16 @@ font-family: 'Roboto';
 .Q1 {
 margin-top: 10vh;
 }
+.instruct-link{
+font-size: 1.2rem;
+color: #f5f4f4;
+}
+.instruct-link:hover{
+font-size: 1.2rem;
+color: #f5f4f4;
+}
+.instruct-btn{
+margin-top: 100px;
+      margin-left: 38px;
+
+}

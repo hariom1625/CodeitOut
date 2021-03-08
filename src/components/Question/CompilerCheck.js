@@ -272,7 +272,7 @@ icon:"far fa-check-circle correct fa-3x"
             };
 
             return (<div >
-                  <div className="row editor container-fluid">
+                  <div className="row editor compiler-chck container-fluid">
 
                         <div className="col-lg-7 col-md-12 col-sm-12">
                               <label for="solution">

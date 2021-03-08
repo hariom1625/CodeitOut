@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 // import Q2 from './Q2.js';
+import { Link} from 'react-router-dom';
 import Loader from '../../Loader/Loader.js';
 import './Q1.css';
 import CompilerCheck from '../CompilerCheck.js';
@@ -77,6 +78,10 @@ return(
                                     Time: {this.state.question.time} </h5 >
                         </div >
                         <CompilerCheck ansid={id} tc={this.state.question.input} ans ={this.state.question.ans} problemName={this.state.question.problemName} />
+                              <button className="btn btn-dark instruct-btn btn-lg">
+                              <Link className="instruct-link" to="/Instructions"> Read Instructions</Link>
+                              </button>
+
 </div>
 )
 }
