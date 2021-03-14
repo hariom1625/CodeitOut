@@ -27,6 +27,8 @@ class Navbar extends Component {
                 this.setState({active:'Questions List'});}
             if(exten === 'resources'){
                 this.setState({active:'Resources'});}
+                if(exten === 'drawingboard'){
+                    this.setState({active:'Drawing Board'});}
 
         }
         else{
@@ -58,6 +60,10 @@ class Navbar extends Component {
                         <Link to ="/resources" id="navLink">
                         <hr className="d-md-none"></hr> <li className={(this.state.active==='Resources')?"nav-item mx-3 px-3 active":"nav-item mx-3 px-3"} onClick={() => { this.changed();
                             window.location.href="/resources";}}>Resources</li>
+                        </Link>
+                        <Link to ="/drawingboard" id="navLink">
+                        <hr className="d-md-none"></hr> <li className={(this.state.active==='Drawing Board')?"nav-item mx-3 px-3 active":"nav-item mx-3 px-3"} onClick={() => { this.changed();
+                            window.location.href="/drawingboard";}}>Drawing Board</li>
                         </Link>
 
 
