@@ -1,7 +1,6 @@
 import React from 'react';
 import LoggedIn from './LoggedIn.js';
 import LoggedOut from './LoggedOut.js';
-import axios from 'axios';
 class App extends React.Component {
       constructor(props) {
 
