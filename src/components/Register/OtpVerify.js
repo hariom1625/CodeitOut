@@ -35,7 +35,7 @@ class OtpVerify extends React.Component {
                   otp
             }
 
-            axios.post('http://localhost:4000/api/User/verify', sendOtp).then((res) => {
+            axios.post(' https://codeitoutserver.herokuapp.com/api/User/verify', sendOtp).then((res) => {
                   notify.show(res.data,"custom", 2000, customNotify)
                   this.setState({success: 1})
             }).catch(err => {

@@ -58,7 +58,7 @@ loggedIn
 
             const resetPassword = {email,password,cnfmPassword}
 
-            axios.put('http://localhost:4000/api/User/forgotPwd',resetPassword)
+            axios.put(' https://codeitoutserver.herokuapp.com/api/User/forgotPwd',resetPassword)
             .then((res) =>{
 
 this.setState({resp:true})

@@ -14,9 +14,9 @@ class Profile extends React.Component {
       componentDidMount() {
 
             const token = localStorage.getItem("userRefreshToken")
-            axios.post('http://localhost:4000/api/user/token', {token}).then(res => {
+            axios.post(' https://codeitoutserver.herokuapp.com/api/user/token', {token}).then(res => {
 
-                  axios.get('http://localhost:4000/api/User/profile', {
+                  axios.get(' https://codeitoutserver.herokuapp.com/api/User/profile', {
                         headers: {
                               Authorization: `Bearer ${res.data.accessToken}`
                         }

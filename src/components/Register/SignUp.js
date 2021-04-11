@@ -48,7 +48,7 @@ loggedIn
 
 const user = {firstname,lastname,email,password,username,resetPwd}
 
-axios.post('http://localhost:4000/api/User/signup',user)
+axios.post(' https://codeitoutserver.herokuapp.com/api/User/signup',user)
 .then((res) => {
 notify.show('OTP sent',"custom", 2000, customNotify)
 this.setState({success:1})

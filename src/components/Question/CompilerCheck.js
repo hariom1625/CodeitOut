@@ -24,7 +24,7 @@ icon:""
       }
 
       componentDidMount() {
-            axios.get("http://localhost:4000/api/question").then((res) => {
+            axios.get(" https://codeitoutserver.herokuapp.com/api/question").then((res) => {
 
                   this.setState({answers: res.data});
 
@@ -242,7 +242,7 @@ console.log(url,x,y)
 const link = y
 const name = this.props.problemName
 const queSet = {name,link}
-axios.post('http://localhost:4000/api/user/ques-done', queSet, {
+axios.post(' https://codeitoutserver.herokuapp.com/api/user/ques-done', queSet, {
       headers: {
             Authorization: `Bearer ${localStorage.getItem("userLoggedToken")}`
       }

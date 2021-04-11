@@ -39,7 +39,7 @@ console.log(refreshToken)
 //       console.log(err)
 //
 // })
-axios.delete('http://localhost:4000/api/user/logout-refreshToken', {refreshToken}).then(res => {
+axios.delete(' https://codeitoutserver.herokuapp.com/api/user/logout-refreshToken', {refreshToken}).then(res => {
 
       localStorage.removeItem("userLoggedToken");
 

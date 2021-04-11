@@ -35,7 +35,7 @@ class ForgotVerify extends React.Component {
                   otp
             }
 
-            axios.put('http://localhost:4000/api/User/forgotPwdVerify', sendOtp).then((res) => {
+            axios.put(' https://codeitoutserver.herokuapp.com/api/User/forgotPwdVerify', sendOtp).then((res) => {
                   notify.show(res.data,"custom", 2000, customNotify)
                   this.setState({success: 1})
             }).catch(err => {

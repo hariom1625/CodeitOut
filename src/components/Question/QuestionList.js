@@ -28,7 +28,7 @@ class QuestionList extends React.Component {
 
       componentDidMount() {
 
-            axios.get("http://localhost:4000/api/question").then((res) => {
+            axios.get(" https://codeitoutserver.herokuapp.com/api/question").then((res) => {
                   this.setState({questions: res.data});
                   console.log(this.state.questions);
 

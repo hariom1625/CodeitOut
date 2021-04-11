@@ -29,7 +29,7 @@ class Q1 extends React.Component {
             const addr = str.substring(13)
             console.log(str);
             console.log(addr);
-            axios.get(`http://localhost:4000/api/question/${addr}`).then((res) => {
+            axios.get(` https://codeitoutserver.herokuapp.com/api/question/${addr}`).then((res) => {
                   this.setState({questions: res.data});
                   console.log(this.state.question);
                   if (res.data > 0) {

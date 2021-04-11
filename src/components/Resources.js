@@ -17,7 +17,7 @@ class Resources extends React.Component {
 
       componentDidMount() {
 
-            axios.get("http://localhost:4000/questionlist.json").then((res) => {
+            axios.get(" https://codeitoutserver.herokuapp.com/questionlist.json").then((res) => {
                   this.setState({questions: res.data});
             });
             // axios.get("http://localhost:4000/answer.json").then((res) => {
