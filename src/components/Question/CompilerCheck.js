@@ -24,11 +24,11 @@ icon:""
       }
 
       componentDidMount() {
-            axios.get("https://codeitoutserver.herokuapp.com/answer.json").then((res) => {
+            axios.get("http://localhost:4000/api/question").then((res) => {
 
                   this.setState({answers: res.data});
 
-console.log(this.state.answers);
+// console.log(this.state.answers);
 
 
             })
@@ -38,12 +38,12 @@ console.log(this.state.answers);
 
 
       editorDidMount(editor, monaco) {
-            console.log('editorDidMount', editor);
+            // console.log('editorDidMount', editor);
             editor.focus();
 
       }
       onChange = (newValue, e) => {
-            console.log('onChange', newValue, e);
+            // console.log('onChange', newValue, e);
             this.setState({input: newValue});
             localStorage.setItem('input', newValue);
 
@@ -58,7 +58,7 @@ console.log(this.state.answers);
             event.preventDefault();
 
             this.setState({user_input: event.target.value});
-            console.log(this.state.user_input);
+            // console.log(this.state.user_input);
 
       };
 
@@ -122,7 +122,7 @@ console.log(this.state.answers);
 
                   if (jsonGetSolution.stdout) {
                         const output = atob(jsonGetSolution.stdout);
-
+// console.log(output);
                         // const test = this.state.users.message;
 
                         outputText.innerHTML = "";
@@ -203,9 +203,15 @@ console.log(this.state.answers);
 
                   if (jsonGetSolution.stdout) {
                         const output = atob(jsonGetSolution.stdout);
+const t1 = JSON.stringify(output);
+// console.log(output)
+// console.log(this.props.ans)
+      // const test =JSON.stringify(output);
+      // console.log(test);
 
-      const test = JSON.stringify(output);
-      const t1 = JSON.stringify(this.props.ans)
+      // const t1 = JSON.stringify(this.props.ans)
+// console.log(this.props.ans);
+      // console.log(t1);
 
       //
       //
@@ -228,7 +234,25 @@ console.log(this.state.answers);
                         outputText.innerHTML = "";
 
                         outputText.innerHTML += `\nExecution Time: ${jsonGetSolution.time} Secs\nMemory Used : ${jsonGetSolution.memory} bytes`;
-                        if (t1===test){
+                        if (t1===this.props.ans){
+                              const url = window.location.href
+const x = url.lastIndexOf("/")
+const y = url.substring(x+1);
+console.log(url,x,y)
+const link = y
+const name = this.props.problemName
+const queSet = {name,link}
+axios.post('http://localhost:4000/api/user/ques-done', queSet, {
+      headers: {
+            Authorization: `Bearer ${localStorage.getItem("userLoggedToken")}`
+      }
+
+      }).then(e =>{
+
+console.log(queSet)
+}).catch(err=>{
+console.log(err)
+})
       this.setState({
 verdict:"Correct Answer",
 icon:"far fa-check-circle correct fa-3x"
@@ -270,20 +294,20 @@ icon:"far fa-check-circle correct fa-3x"
                   formatOnType: true,
                   glyphMargin: true
             };
-
             return (<div >
                   <div className="row editor compiler-chck container-fluid">
 
                         <div className="col-lg-7 col-md-12 col-sm-12">
-                              <label for="solution">
+                              <label htmlFor="solution">
                                     <span class="badge heading-2 bg-secondary">Code
                                           <i class="fas source-logo fa-server"></i>
                                     </span>
-                                    <span className="badge heading-2 bg-secondary prob-name-com">{this.props.problemName}
+<span className="badge heading-2 bg-secondary prob-name-com">{this.props.problemName}
 
-                                    </span>
+</span>
                               </label>
-                              <MonacoEditor className="monaco" width="650" height="500" language="cpp" theme="vs-dark" options={options} value={this.state.input} onChange={this.onChange} editorDidMount={this.editorDidMount}/>
+
+                              <MonacoEditor className="monaco" width="620" height="500" language="cpp" theme="vs-dark" options={options} value={this.state.input} onChange={this.onChange} editorDidMount={this.editorDidMount}/>
 
 
                                     <button type="submit" className="btn btn-dark run-btn btn-lg" onClick={this.run}>
@@ -292,7 +316,7 @@ icon:"far fa-check-circle correct fa-3x"
 <button type="submit" className="btn btn-dark run-btn btn-lg" onClick={ this.submit}>
                                     <i class="fas run-icon fa-cogs"></i>Submit
                               </button>
-                              <label for="tags">
+                              <label htmlFor="tags">
                                     <b className="language-opt">Language</b>
                               </label>
                               <select value={this.state.language} onChange={this.language} id="tags" className="form-control form-inline mb-2 language">
@@ -306,19 +330,19 @@ icon:"far fa-check-circle correct fa-3x"
 
                         </div>
                         <div className="col-lg-5 col-md-12 col-sm-12">
-                              <span className="badge badge-in heading bg-secondary">Input
+                              <span className="badge badge-in cc-heading bg-secondary">Input
                                     <i className="fas input-btn fa-keyboard"></i>
                               </span>
                               <br/>
 
-                              <textarea className="input" id="input" onChange={this.userInput}></textarea>
+                              <textarea className="cc-input" id="input" onChange={this.userInput}></textarea>
                               <br/>
-                              <span class="badge  badge-in heading-1 bg-secondary">Output
+                              <span class="badge  badge-in cc-heading-1 bg-secondary">Output
                                     <i className="fas input-btn fa-laptop-code"></i>
                               </span>
                               <br/>
 
-                              <textarea id="output" className="output"></textarea>
+                              <textarea id="output" className="cc-output"></textarea>
                         </div>
 
 <div className="verdict-cont container">

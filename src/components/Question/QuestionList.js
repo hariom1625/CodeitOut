@@ -2,6 +2,7 @@ import React from 'react';
 import './QuestionList.css';
 import axios from 'axios';
 import Loader from '../Loader/Loader.js';
+
 // import Q2 from './AllQuestions/Q2.js';
 import Q1 from './AllQuestions/Q1.js';
 
@@ -27,18 +28,19 @@ class QuestionList extends React.Component {
 
       componentDidMount() {
 
-            axios.get("https://codeitoutserver.herokuapp.com/api/question").then((res) => {
+            axios.get("http://localhost:4000/api/question").then((res) => {
                   this.setState({questions: res.data});
+                  console.log(this.state.questions);
 
 
                                     if(res.data>0){
                   this.setState({loaded:true})
+
                   }
                   else{
                   this.setState({loaded:true})
                   }
             });
-
 
 
       }
@@ -52,21 +54,16 @@ this.setState({customLink:id});
       }
       render() {
 // const q=1;
-
-if(this.state.loaded){
+const que = this.state.questions.map((question) => {
 return(
-      (<div className="container-fluid">
+      <div className="container-fluid">
 
-                        <h1 className="ql-heading">
-                              Question List
 
-                        </h1>
 
-{
-      this.state.questions.map((question) => (
+
 
                         <div key={question.id} className="container prob-container">
-                              <div class="list-group">
+                              <div className="list-group">
 <Link to={`/questionlist/${question.problemCode}`}>
                                 <button type="button" onClick = {(event) => {this.onHandleClick(question.id)}} className=" prob-btn list-group-item list-group-item-action active" aria-current="true">
                                 {question.problemName}
@@ -76,14 +73,21 @@ return(
 
 
 </div>
-))}
-
-
-
 </div>
+
+)
+})
+if(this.state.loaded){
+return(
+<div>
+      <h1 className="ql-heading">
+            Question List
+
+      </h1>
+{que}</div>
 )
 
-)}
+}
 
 
 else{

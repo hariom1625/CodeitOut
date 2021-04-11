@@ -52,3 +52,15 @@ color: #fff;
         padding-left: 0px;
     }
 }
+.signin-nav{
+
+background-color: #52057b;
+border-color: #52057b;
+margin-left: 5px;
+margin-right: 5px;
+width:auto;
+}
+.signin-nav:hover{
+      background-color: #440A67;
+      border-color: #440A67;
+}

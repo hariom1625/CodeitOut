@@ -1,7 +1,7 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import CompilerCheck from '../CompilerCheck.js';
-class Q1 extends React.Component {
+class Q2 extends React.Component {
       constructor(props) {
             super(props);
 
@@ -14,9 +14,9 @@ class Q1 extends React.Component {
 
       componentDidMount() {
 
-            axios.get("https://codeitoutserver.herokuapp.com/questionlist.json").then((res) => {
-                  this.setState({questions: res.data});
-            });
+            // axios.get("http://localhost:4000/questionlist.json").then((res) => {
+            //       this.setState({questions: res.data});
+            // });
             // axios.get("http://localhost:4000/answer.json").then((res) => {
             //       this.setState({questions: res.data});
             // });
@@ -52,17 +52,14 @@ return (
             </p>
 
       </div >
-
-
       <CompilerCheck ansid={id} tc={question.input} ans ={question.ans} />
 </div>
 );
 }
 else{
 
-      return (<div></div>);
+return (<div>-1</div>);
 }
-
 
 
 
@@ -72,4 +69,4 @@ else{
       }
 }
 
-export default Q1;
+export default Q2;

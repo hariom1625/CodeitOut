@@ -1,44 +1,82 @@
 import React from 'react';
-// import './App.css';
-import Home from './components/Home.js';
-import Navbar from './components/Navbar/Navbar.js';
-import QuestionList from './components/Question/QuestionList.js';
-import Resources from './components/Resources.js';
-import Instructions from './components/Instructions/Instructions.js';
-import DrawingBoard from './components/DrawingBoard/DrawingBoard.js';
-
-import Footer from './components/Footer.js';
-import ScrollToTop from './components/StTop.js';
-import Q1 from './components/Question/AllQuestions/Q1.js';
-
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-
+import LoggedIn from './LoggedIn.js';
+import LoggedOut from './LoggedOut.js';
+import axios from 'axios';
 class App extends React.Component {
+      constructor(props) {
+
+            super(props);
+const token = localStorage.getItem("userLoggedToken")
+            let loggedIn = true
+if(token===null){
+loggedIn = false
+}
+
+this.state={
+login:false,
+loggedIn
+}
+
+}
+
 
       render() {
-            return (<div className="App">
-                  <Router>
-                        <div>
-                              <Navbar/>
-                              <Switch>
-                                    <Route exact path="/" component ={ScrollToTop(Home)}/>
 
-                                    <Route exact path="/QuestionList" component={ScrollToTop(QuestionList)}/>
-                                          <Route exact path="/Questionlist/:addr" urlString={`/QuestionList/:addr`} component={ScrollToTop(Q1)}/>
-                                                <Route exact path="/Resources" component={ScrollToTop(Resources)}/>
-                                                      <Route exact path="/Instructions" component={ScrollToTop(Instructions)}/>
-                                                            <Route exact path="/DrawingBoard" component={ScrollToTop(DrawingBoard)}/>
 
-                              </Switch>
 
-                        </div>
 
-                  </Router>
-                  <Footer/>
 
-            </div>);
+      if (this.state.loggedIn) {
+return   <LoggedIn/>
+
+}
+else{
+      return   <LoggedOut/>
+
+}
       }
 }
 
 export default App;
 // <Route  path={`/Q${x}`} component={ScrollToTop(Q1)}/>
+// <GoogleLogin buttonText="Login" onSuccess={this.responseGoogle} onFailure={this.responseGoogle} cookiePolicy={'single_host_origin'}/>
+// responseGoogle = (response) => {
+//       console.log(response);
+//       console.log(response.profileObj);
+// }
+
+//
+// checkAuth = () =>{
+// console.log("Inside checkAuth()")
+//       const userLoggedToken = localStorage.getItem("userLoggedToken")
+//       const userRefreshToken = localStorage.getItem("userRefreshToken")
+// if(!userLoggedToken || !userRefreshToken)
+// return false;
+//
+// try {
+// const {exp} = decode(userLoggedToken);
+// console.log(exp,'decode');
+// }
+// catch(e){
+// console.log(e,'decode')
+// }
+// }
+//
+//
+//  AuthRoute = ({ component:Component, ...rest }) => (
+//     <Route
+//       {...rest}
+//       render={props=>  (
+//         this.checkAuth ? (
+//          <Component {...props} />
+//         ) : (
+//           <Redirect
+//             to={{
+//               pathname: "/signin"
+//             }}
+//           />
+//         )
+//       )}
+//     />
+//   );
+//

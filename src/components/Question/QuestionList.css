@@ -3,23 +3,7 @@ text-align: center;
 margin-top: 40px;
 margin-bottom: 40px;
 }
-.prob-container{
-margin-left: auto;
-margin-right: auto;
-padding-left: 100px;
-padding-right: 100px;
-}
-.prob-name{
-margin-top: 20px;
-text-decoration: underline;
-font-family: 'Roboto';
 
-}
-.prob-input-head{
-margin-top: 20px;
-font-family: 'Roboto';
-
-}
 .loader{
  /* display: flex;
 align-items: center; justify-content: center;  */
@@ -40,6 +24,12 @@ color: #440a67;
 font-family: 'Roboto';
 
 }
+.prob-input-head{
+margin-top: 20px;
+font-family: 'Roboto';
+
+}
+
 .prob-stmnt{
 font-size: 1.1rem;
 margin-top: 40px;
@@ -58,6 +48,21 @@ font-size: 1.1rem;
 
 }
 
+.prob-time{
+margin-top:60px;
+}
+.prob-container{
+margin-left: auto;
+margin-right: auto;
+padding-left: 100px;
+padding-right: 100px;
+}
+.prob-name{
+margin-top: 20px;
+text-decoration: underline;
+font-family: 'Roboto';
+
+}
 .prob-btn{
 background-color: #E7E1FB!important;
 border-color: #E7E1FB!important;

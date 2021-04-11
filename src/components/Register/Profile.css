@@ -1,0 +1,51 @@
+.profile{
+font-family: 'Roboto';
+
+}
+.profile-div{
+margin-top: 40px;
+margin-left: 40px;
+margin-right: 40px;
+
+}
+.prof-name{
+color:#000;
+font-size: 1.4rem;
+}
+.prof-username{
+font-size: 1.4rem;
+}
+.prof-solved{
+font-size:1.4rem;
+}
+.quesol-name{
+color:#000;
+}
+
+.prof-heading{
+margin-bottom: 50px;
+text-align: center;
+}
+.outer-prof {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
+}
+
+.inner-prof {
+  width: 70vw;
+  margin: auto;
+  background: #ffffff;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  padding: 40px 55px 45px 55px;
+  border-radius: 15px;
+  transition: all .3s;
+}
+
+.quesol-btn{
+background-color: #EAE4FC;
+border-style: none;
+border-radius: 10px;
+margin-right: 20px;
+}

@@ -26,6 +26,7 @@ font-size: 1.1rem;
 margin-top:60px;
 }
 .prob-container{
+color:#000;
 margin-left: auto;
 margin-right: auto;
 padding-left: 100px;
@@ -47,6 +48,7 @@ font-family: 'Roboto';
 .Q1 {
 margin-top: 10vh;
 }
+
 .instruct-link{
 font-size: 1.2rem;
 color: #f5f4f4;

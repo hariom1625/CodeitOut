@@ -1,0 +1,109 @@
+.admin-login{
+text-align: center;
+margin-left: auto;
+margin-right: auto;
+}
+.adminpage-input{
+width:500px;
+margin-left: 50px;
+margin-bottom: 40px;
+
+}
+
+.email-input{
+margin-top: 20px;
+margin-left: auto;
+margin-right: auto;
+width:400px;
+}
+.pass-input{
+      margin-top: 20px;
+
+      margin-left: auto;
+      margin-right: auto;
+width:400px;
+}
+
+.signin{
+margin-left: auto;
+margin-right: auto;
+margin-top: 100px;
+text-align: center;
+}
+.signin-btn{
+      margin-top: 20px;
+      background-color: #440A67;
+border-color:#440A67;
+      margin-left: 35vw;
+      margin-right: auto;
+      width:auto;
+      background-color: #52057b;
+      border-color: #52057b;
+margin-bottom: 50px;
+}
+.signin-btn:hover{
+      background-color: #440A67;
+      border-color: #440A67;
+}
+.signin-btn::after{
+      background-color: #440A67;
+      border-color: #440A67;
+}
+.signin-form{
+display: inline-block;
+padding-bottom: 50px;
+align-items: center;
+text-align: left;
+}
+
+.logout-btn{
+      margin-top: 50vh;
+      width:100px;
+      margin-right: 10vw;
+      margin-left: 80vw;
+      text-align: right;
+
+}
+.login-page-btn{
+      margin-top: 50vh;
+      width:140px;
+      margin-right: 10vw;
+      margin-left: 80vw;
+      text-align: right;
+
+}
+.label-form{
+font-size: 1.2rem;
+margin-left: 50px;
+margin-bottom: 40px;
+}
+
+
+.signup{
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 100px;
+text-align: center;
+}
+
+.signup-form{
+      display: inline-block;
+      padding-bottom: 50px;
+      align-items: center;
+      text-align: left;
+}
+.signup-btn{
+      margin-top: 20px;
+      margin-left: 35vw;
+      margin-right: auto;
+      width:auto;
+
+}
+
+.otp{
+margin-top: 100px;
+}
+
+.otp-head{
+margin-bottom: 30px;
+}
