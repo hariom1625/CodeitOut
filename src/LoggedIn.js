@@ -39,23 +39,6 @@ class LoggedIn extends React.Component {
 
       }
       componentDidMount() {
-            // axios.get('http://localhost:4000/api/User/login-success', {
-            //       headers: {
-            //             Authorization: `Bearer ${localStorage.getItem("userLoggedToken")}`
-            //       }
-            //
-            // }).then((res) => {
-            //       this.setState({loggedIn:res.data})
-            //
-            //
-            //        console.log(this.state.userDetail)
-            //
-            // }).catch((err) => {
-            //       this.setState({loggedIn:false})
-            //       console.log(err)
-            //
-            // })
-
             window.scrollTo(0, 0);
 
       }

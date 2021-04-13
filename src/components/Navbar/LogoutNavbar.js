@@ -80,6 +80,10 @@ class LogoutNavbar extends Component {
                         <hr className="d-md-none"></hr> <li className={(this.state.active==='Resources')?"nav-item mx-3 px-3 active":"nav-item mx-3 px-3"} onClick={() => { this.changed();
                             window.location.href="/resources";}}>Resources</li>
                         </Link>
+                        <Link to ="/Drawing" id="navLink">
+                        <hr className="d-md-none"></hr> <li className={(this.state.active==='Drawing')?"nav-item mx-3 px-3 active":"nav-item mx-3 px-3"} onClick={() => { this.changed();
+                            window.location.href="/DrawingBoard";}}>Drawing Board</li>
+                        </Link>
 
                         <Link to ="/Profile" target="_blank" rel="noopener noreferrer" id="navLink">
                         <hr className="d-md-none"></hr> <li className={(this.state.active==='Resources')?"nav-item mx-3 px-3 active":"nav-item mx-3 px-3"} onClick={() => { this.changed();

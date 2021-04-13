@@ -75,6 +75,10 @@ class LoginNavbar extends Component {
                         <hr className="d-md-none"></hr> <li className={(this.state.active==='Questions List')?"nav-item mx-3 px-3 active":"nav-item mx-3 px-3"} onClick={() =>{ this.changed();
                             window.location.href="/questionlist";}}>Questions List</li>
                         </Link>
+                        <Link to ="/Drawing" id="navLink">
+                        <hr className="d-md-none"></hr> <li className={(this.state.active==='Drawing')?"nav-item mx-3 px-3 active":"nav-item mx-3 px-3"} onClick={() => { this.changed();
+                            window.location.href="/DrawingBoard";}}>Drawing Board</li>
+                        </Link>
 
                         <Link to ="/resources" id="navLink">
                         <hr className="d-md-none"></hr> <li className={(this.state.active==='Resources')?"nav-item mx-3 px-3 active":"nav-item mx-3 px-3"} onClick={() => { this.changed();
