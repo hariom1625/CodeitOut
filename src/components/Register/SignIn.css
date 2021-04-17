@@ -50,3 +50,13 @@
 .forgot-password a {
   color: #167bff;
 }
+
+@media(max-width:600px){
+
+      .inner {
+        width: auto;
+margin-left: 25px;
+margin-right: 25px;
+      }
+
+}

@@ -75,10 +75,6 @@ class LoginNavbar extends Component {
                         <hr className="d-md-none"></hr> <li className={(this.state.active==='Questions List')?"nav-item mx-3 px-3 active":"nav-item mx-3 px-3"} onClick={() =>{ this.changed();
                             window.location.href="/questionlist";}}>Questions List</li>
                         </Link>
-                        <Link to ="/Drawing" id="navLink">
-                        <hr className="d-md-none"></hr> <li className={(this.state.active==='Drawing')?"nav-item mx-3 px-3 active":"nav-item mx-3 px-3"} onClick={() => { this.changed();
-                            window.location.href="/DrawingBoard";}}>Drawing Board</li>
-                        </Link>
 
                         <Link to ="/resources" id="navLink">
                         <hr className="d-md-none"></hr> <li className={(this.state.active==='Resources')?"nav-item mx-3 px-3 active":"nav-item mx-3 px-3"} onClick={() => { this.changed();
@@ -87,13 +83,16 @@ class LoginNavbar extends Component {
 
 
                     </ul>
+<div className="btn-grp">
+                    <Link to="/SignIn">
+                                <button onClick={refreshPage} className="btn signin-nav btn-lg btn-dark btn-block" type="submit" name="SignIn"> Sign In </button>
+                   </Link>
+                   <Link to="/SignUp">
+                        <button onClick={refreshPage} className="btn signin-nav btn-lg btn-dark btn-block" type="submit" name="SignUp"> Sign Up </button>
+                   </Link>
                 </div>
-                <Link to="/SignIn" >
-                            <button onClick={refreshPage} className="btn signin-nav btn-lg btn-dark btn-block" type="submit" name="SignIn"> Sign In </button>
-                </Link>
-                <Link to="/SignUp">
-                      <button onClick={refreshPage} className="btn signin-nav btn-lg btn-dark btn-block" type="submit" name="SignUp"> Sign Up </button>
-                </Link>
+</div>
+
             </nav>
 
 </div>

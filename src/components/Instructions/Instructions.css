@@ -1,8 +1,12 @@
+.instruct-container{
+text-align: justify;
+color:#000;
+}
 .instruct-head{
 text-decoration: underline;
 font-family: 'Roboto';
 margin-top: 20px;
-margin-left: 25px;
+margin-left: 10px;
 }
 
 .instruct-head-1{
@@ -13,11 +17,20 @@ margin-left: 25px;
 
 .instruct-pt{
 margin-top: 20px;
-margin-left: 40px;
+margin-left: 10px;
+margin-right: 10px;
 font-size: 1.1rem;
 font-family: 'Roboto';
 }
 .instruct-gist{
 margin-top: 20px;
 width:400px!important;
+}
+
+@media(max-width:500px){
+      .instruct-gist{
+
+      width:300px!important;
+      }
+
 }

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './Navbar.css';
-import { Link } from 'react-router-dom';
-
-function refreshPage ()  {
-setTimeout( () => {
-window.location.reload(false)
-},500);
-console.log("Reload")
-}
+import { Link,Redirect } from 'react-router-dom';
+import axios from 'axios';
+// function refreshPage ()  {
+// setTimeout( () => {
+// window.location.reload(false)
+// },500);
+// console.log("Reload")
+// }
 
 
 class LogoutNavbar extends Component {
@@ -16,7 +16,7 @@ class LogoutNavbar extends Component {
 
         super(props);
 
-        this.state = { active:'Home'};
+        this.state = { active:'Home',isClicked:false};
         this.changed = this.changed.bind(this);
 
     }
@@ -51,6 +51,23 @@ class LogoutNavbar extends Component {
    console.log("Reload")
    }
 
+signout = () => {
+      const refreshToken  = this.state.refreshToken
+
+      axios.delete('https://codeitoutserver.herokuapp.com/api/user/logout-refreshToken', {refreshToken}).then(res => {
+
+            localStorage.removeItem("userLoggedToken");
+
+            localStorage.removeItem("userRefreshToken");
+this.setState({isClicked:true})
+      // notify.show("Logged Out Successfully","custom",2000,customNotify)
+      })
+      .catch(err=> {
+      console.log(err)
+      })
+
+
+}
     render(){
 
 
@@ -80,10 +97,6 @@ class LogoutNavbar extends Component {
                         <hr className="d-md-none"></hr> <li className={(this.state.active==='Resources')?"nav-item mx-3 px-3 active":"nav-item mx-3 px-3"} onClick={() => { this.changed();
                             window.location.href="/resources";}}>Resources</li>
                         </Link>
-                        <Link to ="/Drawing" id="navLink">
-                        <hr className="d-md-none"></hr> <li className={(this.state.active==='Drawing')?"nav-item mx-3 px-3 active":"nav-item mx-3 px-3"} onClick={() => { this.changed();
-                            window.location.href="/DrawingBoard";}}>Drawing Board</li>
-                        </Link>
 
                         <Link to ="/Profile" target="_blank" rel="noopener noreferrer" id="navLink">
                         <hr className="d-md-none"></hr> <li className={(this.state.active==='Resources')?"nav-item mx-3 px-3 active":"nav-item mx-3 px-3"} onClick={() => { this.changed();
@@ -91,10 +104,15 @@ class LogoutNavbar extends Component {
                         </Link>
 
                     </ul>
-                </div>
-                <Link to="/SignOut" >
-                            <button  onClick={refreshPage} className="btn signin-nav btn-lg btn-dark btn-block" type="submit" name="SignOut"> Sign Out</button>
-                </Link>
+
+<div className="btn-grp">
+                            <button onClick={() => {this.signout(); this.refreshPage();} } className="btn signin-nav btn-lg btn-dark btn-block" type="submit" name="SignOut">
+Sign Out
+</button>
+{this.state.isClicked===true?<Redirect to="/"/>: null}
+
+</div>
+  </div>
             </nav>
 </div>
 

@@ -13,10 +13,10 @@ import AdminPage from './Admin/AdminPage.js';
 import Logout from './Admin/Logout.js';
 import SignUp from './components/Register/SignUp.js';
 import SignIn from './components/Register/SignIn.js';
-import SignOut from './components/Register/SignOut.js';
 import Verify from './components/Register/OtpVerify.js';
 import Success from './components/Register/Success.js';
 import Failure from './components/Register/Failure.js';
+import Error from './components/Error/Error.js';
 import axios from 'axios';
 import ASU from './components/Register/AfterSignUp.js';
 
@@ -37,6 +37,22 @@ loggedIn:false            }
 
       }
 componentDidMount(){
+      axios.get('https://codeitoutserver.herokuapp.com/api/User/login-success', {
+            headers: {
+                  Authorization: `Bearer ${localStorage.getItem("userLoggedToken")}`
+            }
+
+      }).then((res) => {
+            this.setState({loggedIn:res.data})
+
+
+            // console.log(this.state.userDetail)
+
+      }).catch((err) => {
+            this.setState({loggedIn:false})
+            console.log(err)
+
+      })
 
       window.scrollTo(0, 0);
 
@@ -64,14 +80,14 @@ componentDidMount(){
                                           <Route exact path="/SignUp" component={(props) => (<SignUp timestamp={new Date().toString()} {...props}/>)}/>
                                           <Route exact path="/SignIn" component={(props) => (<SignIn timestamp={new Date().toString()} {...props}/>)}/>
                                           <Route exact path="/ASU" component={(props) => (<ASU timestamp={new Date().toString()} {...props}/>)}/>
-                                          <Route exact path="/SignOut" component={(props) => (<SignOut timestamp={new Date().toString()} {...props}/>)}/>
                                           <Route exact path="/Verify" component={ScrollToTop(Verify)}/>
                                           <Route exact path="/Success" component={ScrollToTop(Success)}/>
                                           <Route exact path="/Failure" component={ScrollToTop(Failure)}/>
                                           <Route exact path="/Profile" component={(props) => (<Profile timestamp={new Date().getTime().toString()} {...props}/>)}/>
                                                 <Route exact path="/ForgotPassword"  component={ScrollToTop(ForgotPwd)}/>
                                                       <Route exact path="/ForgotVerify"  component={ScrollToTop(ForgotVerify)}/>
-      </Switch>
+<Route component={Error}/>
+</Switch>
 
                               </div>
 

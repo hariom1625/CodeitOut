@@ -51,7 +51,7 @@ name:''
 <h1>
 {this.state.name}
 </h1>
-<div className="container">
+<div className="container ">
 <Compiler/>
 </div>
 

@@ -64,13 +64,19 @@ text-align: left;
       text-align: right;
 
 }
-.login-page-btn{
+.logout-page-btn{
+      background-color: #52057b;
+      border-color: #52057b;
       margin-top: 50vh;
       width:140px;
       margin-right: 10vw;
       margin-left: 80vw;
       text-align: right;
 
+}
+.logout-page-btn:hover{
+      background-color: #440A67;
+      border-color: #440A67;
 }
 .label-form{
 font-size: 1.2rem;

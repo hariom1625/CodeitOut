@@ -47,20 +47,34 @@ color: #fff;
     margin:0px;
     padding-left: 30px;
 }
-@media(max-width:576px){
-    .logo {
-        padding-left: 0px;
-    }
-}
 .signin-nav{
-
+margin-top: 10px;
 background-color: #52057b;
 border-color: #52057b;
 margin-left: 5px;
 margin-right: 5px;
+display: inline-block;
+
 width:auto;
 }
 .signin-nav:hover{
       background-color: #440A67;
       border-color: #440A67;
+}
+.btn-grp{
+text-align: center;
+}
+
+@media(max-width:700px){
+      .signin-nav{
+font-size: 1.2rem;
+
+      margin-left: 0;
+      margin-right: 10px;
+      }
+}
+@media(max-width:576px){
+    .logo {
+        padding-left: 0px;
+    }
 }

@@ -1,64 +1,79 @@
-.prob-input-head{
-margin-top: 20px;
-font-family: 'Roboto';
-
+.prob-input-head {
+font-weight: bold;
+     margin-top: 20px;
+      font-family: 'Roboto';
 }
 
-.prob-stmnt{
-font-size: 1.1rem;
-margin-top: 20px;
-padding-left: 40px;
-padding-right: 40px;
-font-family: 'Roboto';
+.prob-stmnt {
+      font-size: 1.1rem;
+      margin-top: 20px;
+      padding-left: 20px;
+      padding-right: 20px;
+      font-family: 'Roboto';
 }
-.prob-input{
-font-size: 1.1rem;
+
+.prob-input {
+      font-size: 1.1rem;
+      margin-top: 20px;
+      padding-left: 20px;
+      padding-right: 20px;
+      font-family: 'Roboto';
+}
+
+.prob-time {
+      font-weight: bold;
+      padding-right: 20px;
+      margin-top: 60px;
+}
+
+.prob-container {
+      color: #000;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 100px;
+      padding-right: 100px;
+}
+
+.prob-head-q1 {
+      font-weight: bold;
 
       margin-top: 20px;
-      padding-left: 40px;
-      padding-right: 40px;
+      margin-bottom: 10vh;
+      text-decoration: underline;
+      text-align: center;
       font-family: 'Roboto';
-
-
 }
 
-.prob-time{
-margin-top:60px;
-}
-.prob-container{
-color:#000;
-margin-left: auto;
-margin-right: auto;
-padding-left: 100px;
-padding-right: 100px;
-}
-.prob-head-q1{
-margin-top: 20px;
-margin-bottom: 10vh;
-text-decoration: underline;
-text-align:center;
-font-family: 'Roboto';
+.prob-name-q1 {
+      font-weight: bold;
 
-}
-.prob-name-q1{
-font-family: 'Roboto';
-
+      font-family: 'Roboto';
 }
 
 .Q1 {
-margin-top: 10vh;
+      margin-top: 10vh;
+text-align: justify;
 }
 
-.instruct-link{
-font-size: 1.2rem;
-color: #f5f4f4;
+@media(max-width:700px){
+
+      .prob-name-q1 {
+            padding-left: 20px;
+            padding-right: 20px;
+font-size: 1.5rem;
+     }
+.prob-input-head{
+      padding-left: 20px;
+      padding-right: 20px;
+font-size: 1.5rem;
 }
-.instruct-link:hover{
-font-size: 1.2rem;
-color: #f5f4f4;
+.prob-input {
+      font-size: 1.1rem;
+      margin-top: 20px;
+      padding-left: 20px;
+      padding-right: 20px;
+      font-family: 'Roboto';
 }
-.instruct-btn{
-margin-top: 100px;
-      margin-left: 38px;
+
 
 }

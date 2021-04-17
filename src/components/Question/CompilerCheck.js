@@ -1,6 +1,6 @@
 import React from 'react';
 import './CompilerCheck.css';
-
+import {Link} from 'react-router-dom';
 import MonacoEditor from 'react-monaco-editor';
 import axios from 'axios';
 
@@ -19,24 +19,65 @@ answers:[],
 tc:0,
 ans:0,
 verdict: "",
-icon:""
+icon:"",
+width:620,
+height:600
             };
       }
-
       componentDidMount() {
-            axios.get(" https://codeitoutserver.herokuapp.com/api/question").then((res) => {
+            axios.get("https://codeitoutserver.herokuapp.com/api/question").then((res) => {
 
                   this.setState({answers: res.data});
 
 // console.log(this.state.answers);
+window.addEventListener("resize",this.updateDimensions);
 
 
             })
 
+      }
+      componentWillUnmount(){
+            window.removeEventListener("resize",this.updateDimensions);
 
       }
-
-
+      updateDimensions = () => {
+      if(window.innerWidth>=1200){
+            this.setState({
+            width:620,
+            height:600
+            });
+      }
+       if(window.innerWidth<1200){
+            this.setState({
+            width:500,
+            height:400
+            });
+      }
+       if(window.innerWidth<=1024){
+            this.setState({
+            width:430,
+            height:400
+            });
+      }
+      if(window.innerWidth<=700){
+           this.setState({
+           width:320,
+           height:320
+           });
+      }
+      if(window.innerWidth<=350){
+           this.setState({
+           width:280,
+           height:300
+           });
+      }
+      if(window.innerWidth<=300){
+           this.setState({
+           width:250,
+           height:280
+           });
+      }
+      }
       editorDidMount(editor, monaco) {
             // console.log('editorDidMount', editor);
             editor.focus();
@@ -204,33 +245,8 @@ icon:""
                   if (jsonGetSolution.stdout) {
                         const output = atob(jsonGetSolution.stdout);
 const t1 = JSON.stringify(output);
-// console.log(output)
-// console.log(this.props.ans)
-      // const test =JSON.stringify(output);
-      // console.log(test);
 
-      // const t1 = JSON.stringify(this.props.ans)
-// console.log(this.props.ans);
-      // console.log(t1);
 
-      //
-      //
-      // {
-      // this.state.answers.map((answer)=>{
-      //
-      // if(this.props.ansid===answer.id){
-      // return(
-      // this.setState({
-      // ans:answer.ans,
-      // tc:answer.tc})
-      // )
-      // }
-      // })
-      // }
-      // const tc1 = JSON.stringify(this.state.tc)
-      //
-      // console.log(t1);
-      // console.log(tc1);
                         outputText.innerHTML = "";
 
                         outputText.innerHTML += `\nExecution Time: ${jsonGetSolution.time} Secs\nMemory Used : ${jsonGetSolution.memory} bytes`;
@@ -242,7 +258,7 @@ console.log(url,x,y)
 const link = y
 const name = this.props.problemName
 const queSet = {name,link}
-axios.post(' https://codeitoutserver.herokuapp.com/api/user/ques-done', queSet, {
+axios.post('http://localhost:4000/api/user/ques-done', queSet, {
       headers: {
             Authorization: `Bearer ${localStorage.getItem("userLoggedToken")}`
       }
@@ -299,25 +315,26 @@ icon:"far fa-check-circle correct fa-3x"
 
                         <div className="col-lg-7 col-md-12 col-sm-12">
                               <label htmlFor="solution">
-                                    <span class="badge heading-2 bg-secondary">Code
+                                    <span class="badge cc-heading-2 bg-secondary">Code
                                           <i class="fas source-logo fa-server"></i>
                                     </span>
-<span className="badge heading-2 bg-secondary prob-name-com">{this.props.problemName}
+<span className="badge cc-heading-2 bg-secondary prob-name-com">{this.props.problemName}
 
 </span>
                               </label>
 
-                              <MonacoEditor className="monaco" width="620" height="500" language="cpp" theme="vs-dark" options={options} value={this.state.input} onChange={this.onChange} editorDidMount={this.editorDidMount}/>
+                              <MonacoEditor className="monaco" width={this.state.width} height={this.state.height} language="cpp" theme="vs-dark" options={options} value={this.state.input} onChange={this.onChange} editorDidMount={this.editorDidMount}/>
 
 
-                                    <button type="submit" className="btn btn-dark run-btn btn-lg" onClick={this.run}>
+                                    <button type="submit" className="btn btn-dark cc-run-btn btn-lg" onClick={this.run}>
                                                                         <i class="fas run-icon fa-cogs"></i>Run
                                                                   </button>
-<button type="submit" className="btn btn-dark run-btn btn-lg" onClick={ this.submit}>
+<button type="submit" className="btn btn-dark cc-run-btn btn-lg" onClick={ this.submit}>
                                     <i class="fas run-icon fa-cogs"></i>Submit
                               </button>
+<br/>
                               <label htmlFor="tags">
-                                    <b className="language-opt">Language</b>
+                                    <b className="cc-language-opt">Language</b>
                               </label>
                               <select value={this.state.language} onChange={this.language} id="tags" className="form-control form-inline mb-2 language">
 
@@ -348,11 +365,15 @@ icon:"far fa-check-circle correct fa-3x"
 <div className="verdict-cont container">
 <p><span className="verdict-def">Verdict: </span> <i className={this.state.icon}><span className="verdict-text">{this.state.verdict}</span></i></p>
 
-
 </div>
 
-                  </div>
 
+
+                  </div>
+                  <button className="btn btn-dark instruct-btn btn-lg">
+                                                <Link className="instruct-link" to="/Instructions">
+                                                      Read Instructions</Link>
+                                          </button>
             </div>
 
 );

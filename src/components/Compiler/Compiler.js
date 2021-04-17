@@ -1,7 +1,6 @@
 import React from 'react';
 import './Compiler.css';
 import MonacoEditor from 'react-monaco-editor';
-import axios from 'axios';
 
 class Compiler extends React.Component {
       constructor(props) {
@@ -14,16 +13,22 @@ class Compiler extends React.Component {
                   output: ``,
                   userInput: ``,
                   language_id: localStorage.getItem('language_id') || 54,
-lang:"cpp"
+lang:"cpp",
+width:620,
+height:600
             };
       }
 
       componentDidMount() {
-            axios.get("http://localhost:4000/").then((res) => {
 
-                  this.setState({users: res.data});
-            })
+
+window.addEventListener("resize",this.updateDimensions);
       }
+
+componentWillUnmount(){
+      window.removeEventListener("resize",this.updateDimensions);
+
+}
       editorDidMount(editor, monaco) {
             // console.log('editorDidMount', editor);
             editor.focus();
@@ -56,6 +61,44 @@ lang:"cpp"
 
 
       };
+updateDimensions = () => {
+if(window.innerWidth>=1200){
+      this.setState({
+      width:620,
+      height:600
+      });
+}
+ if(window.innerWidth<1200){
+      this.setState({
+      width:500,
+      height:400
+      });
+}
+ if(window.innerWidth<=1024){
+      this.setState({
+      width:430,
+      height:400
+      });
+}
+if(window.innerWidth<=700){
+     this.setState({
+     width:320,
+     height:320
+     });
+}
+if(window.innerWidth<=350){
+     this.setState({
+     width:280,
+     height:300
+     });
+}
+if(window.innerWidth<=300){
+     this.setState({
+     width:250,
+     height:280
+     });
+}
+}
 
       submit = async (e) => {
             e.preventDefault();
@@ -158,21 +201,23 @@ lang:"cpp"
                                           <i className="fas source-logo fa-server"></i>
                                     </span>
                               </label>
-                              <MonacoEditor className="monaco" width="620" height="600" language="cpp" theme="vs-dark" options={options} value={this.state.input} onChange={this.onChange} editorDidMount={this.editorDidMount}/>
-                              <button type="submit" className="btn btn-dark run-btn btn-lg" onClick={this.submit}>
-                                    <i className="fas run-icon fa-cogs"></i>Run
-                              </button>
-                              <label htmlFor="tags">
-                                    <b className="language-opt">Language</b>
-                              </label>
-                              <select value={this.state.language_id} onChange={this.language} id="tags" className="form-control form-inline mb-2 language">
+                              <MonacoEditor className="monaco" width={this.state.width} height={this.state.height} language="cpp" theme="vs-dark" options={options} value={this.state.input} onChange={this.onChange} editorDidMount={this.editorDidMount}/>
+      <button type="submit" className="btn btn-dark run-btn btn-lg" onClick={this.submit}>
+                                          <i className="fas run-icon fa-cogs"></i>Run
+                                    </button>
+                                    <label htmlFor="tags">
+                                          <b className="language-opt">Language</b>
+                                                <select value={this.state.language_id} onChange={this.language} id="tags" className="form-control form-inline mb-2 language">
 
-                                    <option value="54">C++</option>
-                                    <option value="50">C</option>
-                                    <option value="62">JAVA</option>
-                                    <option value="63">JAVASCRIPT</option>
-                                    <option value="71">PYTHON</option>
-                              </select>
+                                                      <option value="54">C++</option>
+                                                      <option value="50">C</option>
+                                                      <option value="62">JAVA</option>
+                                                      <option value="63">JAVASCRIPT</option>
+                                                      <option value="71">PYTHON</option>
+                                                </select>
+                                    </label>
+
+
 
                         </div>
                         <div className="col-lg-5 col-md-12 col-sm-12">
