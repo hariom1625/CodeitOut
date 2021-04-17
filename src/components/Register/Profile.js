@@ -45,34 +45,40 @@ class Profile extends React.Component {
 
             const prof = this.state.userDetail.map((detail) => {
                   return (
-<div className="profile">
-<div className="profile-div row">
-                        <div className=" col-lg-4">
+<div >
+<div className=" prof-cont container ">
+<div className="row">
+                        <div className="  col-5">
                               <h4 className="prof-name">Name :</h4>
                         </div>
-                        <div className="prof-name col-lg-5">
+                        <div className="  col-7">
                               <h4 className="prof-name"> {detail.firstname}
                                     <span> </span>
                                     {detail.lastname}</h4>
                         </div>
 
                   </div>
+</div>
+<div className=" prof-cont container ">
 
-<div className="profile-div row">
-                        <div className="prof-username col-lg-4">
+<div className="row">
+                        <div className="  col-5">
                               <h4 className="prof-username">Username :</h4>
                         </div>
-                        <div className="prof-username col-lg-5">
+                        <div className="  col-7">
                               <h4 className="prof-username">{detail.username}</h4>
                         </div>
                   </div>
+            </div>
 
-<div className="profile-div row">
-                        <div className="prof-solved col-lg-4">
+            <div className=" prof-cont container ">
+
+            <div className="row">
+                        <div className="  col-5">
                               <h4 className="prof-solved">Solved:      </h4>
 
                         </div>
-                        <div className="prof-solved col-lg-7">
+                        <div className="  col-7">
                               <h5>{
 
                                           this.state.quesol.map(que => {
@@ -93,12 +99,13 @@ class Profile extends React.Component {
                         </div>
                   </div>
 </div>
+</div>
 
 )
             })
             if (this.state.loaded) {
 
-                  return (<div className="profile-div">
+                  return (<div className="profile-div ">
                         <div className="outer-prof">
                               <div className="inner-prof">
                                     <h1 className="prof-heading">

@@ -134,7 +134,7 @@ else{
 
                             <div className="form-group">
                                 <label>Password</label>
-                                      <input type="text" name="password" className="form-control " value={this.state.password} onChange={this.onChange} placeholder="Password"/>
+                                      <input type="password" name="password" className="form-control " value={this.state.password} onChange={this.onChange} placeholder="Password"/>
                             </div>
 
                             <div className="form-group">

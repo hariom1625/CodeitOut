@@ -60,6 +60,7 @@ signout = () => {
 
             localStorage.removeItem("userRefreshToken");
 this.setState({isClicked:true})
+this.refreshPage();
       // notify.show("Logged Out Successfully","custom",2000,customNotify)
       })
       .catch(err=> {
@@ -106,7 +107,7 @@ this.setState({isClicked:true})
                     </ul>
 
 <div className="btn-grp">
-                            <button onClick={() => {this.signout(); this.refreshPage();} } className="btn signin-nav btn-lg btn-dark btn-block" type="submit" name="SignOut">
+                            <button onClick={this.signout }className="btn signin-nav btn-lg btn-dark btn-block"  name="SignOut">
 Sign Out
 </button>
 {this.state.isClicked===true?<Redirect to="/"/>: null}

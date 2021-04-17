@@ -4,8 +4,8 @@ font-family: 'Roboto';
 }
 .profile-div{
 margin-top: 40px;
-margin-left: 40px;
-margin-right: 40px;
+margin-left: 20px;
+margin-right: 20px;
 
 }
 .prof-name{
@@ -48,4 +48,33 @@ background-color: #EAE4FC;
 border-style: none;
 border-radius: 10px;
 margin-right: 20px;
+}
+
+.prof-cont{
+margin-top: 40px;
+}
+
+@media(max-width:600px){
+.profile-div{
+
+margin-left: 10px;
+margin-right: 10px;
+}
+.prof-name{
+font-size: 1.2rem!important;
+}
+.prof-username{
+font-size: 1.2rem!important;
+}
+.prof-solved{
+font-size: 1.2rem!important;
+}
+      .inner-prof {
+        width: auto;
+margin-left: 0;
+margin-right: 0;
+padding-left: 10px;
+padding-right: 10px;
+      }
+
 }
