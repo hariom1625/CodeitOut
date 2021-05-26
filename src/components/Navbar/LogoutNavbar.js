@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Navbar.css';
-import { Link,Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 // function refreshPage ()  {
 // setTimeout( () => {
