@@ -46,9 +46,9 @@ const id = localStorage.getItem("id");
 localStorage.removeItem("id");
             }).catch(err => {
 
-                  const res = err.response.data
+                  // const res = err.response.data
                   this.setState({success: 0})
-                  alert(res)
+                  // alert(res)
                   localStorage.removeItem("id");
 
             });

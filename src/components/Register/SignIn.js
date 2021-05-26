@@ -78,13 +78,11 @@ class SignIn extends React.Component {
                         this.setState({loaded: true})
                   }
                   if (res.data === false) {
-                        // alert('Wrong Password');
                         notify.show('Wrong Password', "custom", 2000, customNotify)
 
                         this.setState({loggedIn: false})
 
                   } else {
-                        // alert('Logged In Successfully');
 
                         notify.show('Logged In Successfully', "custom", 2000, customNotify)
                         loggedIn = true
@@ -96,10 +94,8 @@ class SignIn extends React.Component {
             }).catch(err => {
                   this.setState({loaded: true})
                   if (err.response.status === 400) {
-                        // alert('Not Registered')
                         notify.show('Not Registered', "custom", 2000, customNotify)
                   } else {
-                        // alert(err.response.message)
                         notify.show(err.response.message, "custom", 2000, customNotify)
                   }
             });

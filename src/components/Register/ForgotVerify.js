@@ -45,9 +45,9 @@ class ForgotVerify extends React.Component {
                   this.setState({success: 1})
             }).catch(err => {
 
-                  const res = err.response.data
+                  // const res = err.response.data
                   this.setState({success: 0})
-                  alert(res)
+                  // alert(res)
             });
       }
       render() {
