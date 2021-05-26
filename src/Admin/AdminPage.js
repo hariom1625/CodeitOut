@@ -52,7 +52,12 @@ const {id,problemCode,problemName,problemDesc,problemInputDesc, problemOutputDes
 const que ={
 id,problemCode,problemName,problemDesc,problemInputDesc, problemOutputDesc, input, ans,time
 }
-axios.post('http://localhost:4000/api/Question',que)
+axios.post('http://localhost:4000/api/Question',que,{
+
+headers:{
+authorization:`Bearer ${process.env.REACT_APP_TC_TOKEN}`
+}
+})
 .then(() => console.log("Question sent.....!!!!!"))
 .catch(err =>{
 console.log(err)

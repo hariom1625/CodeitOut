@@ -5,34 +5,28 @@ class App extends React.Component {
       constructor(props) {
 
             super(props);
-const token = localStorage.getItem("userLoggedToken")
+            const token = localStorage.getItem("userLoggedToken")
             let loggedIn = true
-if(token===null){
-loggedIn = false
-}
+            if (token === null) {
+                  loggedIn = false
+            }
 
-this.state={
-login:false,
-loggedIn
-}
+            this.state = {
+                  login: false,
+                  loggedIn
+            }
 
-}
-
+      }
 
       render() {
 
+            if (this.state.loggedIn) {
+                  return <LoggedIn/>
 
+            } else {
+                  return <LoggedOut/>
 
-
-
-      if (this.state.loggedIn) {
-return   <LoggedIn/>
-
-}
-else{
-      return   <LoggedOut/>
-
-}
+            }
       }
 }
 

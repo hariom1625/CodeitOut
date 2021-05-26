@@ -58,13 +58,17 @@ loggedIn
 
             const resetPassword = {email,password,cnfmPassword}
 
-            axios.put(' https://codeitoutserver.herokuapp.com/api/User/forgotPwd',resetPassword)
+            axios.put('https://codeitoutserver.herokuapp.com/api/User/forgotPwd',resetPassword,{
+
+            headers:{
+            authorization:`Bearer ${process.env.REACT_APP_TC_TOKEN}`
+            }
+            })
             .then((res) =>{
 
 this.setState({resp:true})
 })
             .catch(err =>{
-console.log(err.response.data)
 notify.show(err.response.data,"custom", 2000, customNotify)
 
 

@@ -6,7 +6,6 @@ function refreshPage ()  {
 setTimeout( () => {
 window.location.reload(false)
 },50);
-console.log("Reload")
 }
 class LoginNavbar extends Component {
 
@@ -22,17 +21,17 @@ class LoginNavbar extends Component {
 
     changed(){
         const ext = document.URL;
-        //console.log(ext);
-        //const conti = ext.includes("00/");
+
         if(ext.length > 22)
         {
             const n = ext.lastIndexOf("/");
             const exten = ext.substring(n+1);
-            //console.log(exten);
             if(exten === 'questionlist'){
                 this.setState({active:'Questions List'});}
             if(exten === 'resources'){
                 this.setState({active:'Resources'});}
+                if(exten === 'Drawing Board'){
+                 this.setState({active:'Drawing Board'});}
                 if(exten === 'Profile'){
                    this.setState({active:'Profile'});}
 
@@ -41,14 +40,12 @@ class LoginNavbar extends Component {
             this.setState({active:'Home'});
         }
 
-        //console.log(this.state.active);
     }
 
     refreshPage ()  {
     setTimeout( () => {
     window.location.reload(false)
     },50);
-    console.log("Reload")
     }
 
     render(){
@@ -80,7 +77,10 @@ class LoginNavbar extends Component {
                         <hr className="d-md-none"></hr> <li className={(this.state.active==='Resources')?"nav-item mx-3 px-3 active":"nav-item mx-3 px-3"} onClick={() => { this.changed();
                             window.location.href="/resources";}}>Resources</li>
                         </Link>
-
+                        <Link to ="/DrawingBoard" target="_blank" rel="noopener noreferrer" id="navLink">
+                        <hr className="d-md-none"></hr> <li className={(this.state.active==='Drawing Board')?"nav-item mx-3 px-3 active":"nav-item mx-3 px-3"} onClick={() => { this.changed();
+                         this.refreshPage();   window.location.href="/DrawingBoard";}}>Drawing Board</li>
+                        </Link>
 
                     </ul>
 <div className="btn-grp">

@@ -24,16 +24,11 @@ width:620,
 height:600
             };
       }
+
       componentDidMount() {
-            axios.get("https://codeitoutserver.herokuapp.com/api/question").then((res) => {
 
-                  this.setState({answers: res.data});
-
-// console.log(this.state.answers);
 window.addEventListener("resize",this.updateDimensions);
 
-
-            })
 
       }
       componentWillUnmount(){
@@ -79,12 +74,10 @@ window.addEventListener("resize",this.updateDimensions);
       }
       }
       editorDidMount(editor, monaco) {
-            // console.log('editorDidMount', editor);
             editor.focus();
 
       }
       onChange = (newValue, e) => {
-            // console.log('onChange', newValue, e);
             this.setState({input: newValue});
             localStorage.setItem('input', newValue);
 
@@ -99,7 +92,6 @@ window.addEventListener("resize",this.updateDimensions);
             event.preventDefault();
 
             this.setState({user_input: event.target.value});
-            // console.log(this.state.user_input);
 
       };
 
@@ -119,8 +111,8 @@ window.addEventListener("resize",this.updateDimensions);
                   const response = await fetch("https://judge0-ce.p.rapidapi.com/submissions", {
                         method: "POST",
                         headers: {
-                              "x-rapidapi-host": "judge0-ce.p.rapidapi.com",
-                              "x-rapidapi-key": "e535d12d26msh1fe73d90a985d7ap1b0b2ajsnacb9e34ab20e",
+                              "x-rapidapi-host": process.env.REACT_APP_RAPID_HOST,
+                              "x-rapidapi-key":process.env.REACT_APP_RAPID_KEY,
                               "content-type": "application/json",
                               accept: "application/json"
                         },
@@ -149,8 +141,8 @@ window.addEventListener("resize",this.updateDimensions);
                               const getSolution = await fetch(url, {
                                     method: "GET",
                                     headers: {
-                                          "x-rapidapi-key": "e535d12d26msh1fe73d90a985d7ap1b0b2ajsnacb9e34ab20e",
-                                          "x-rapidapi-host": "judge0-ce.p.rapidapi.com",
+                                          "x-rapidapi-key":process.env.REACT_APP_RAPID_KEY,
+                                          "x-rapidapi-host": process.env.REACT_APP_RAPID_HOST,
                                           "content-type": "application/json"
                                     }
                               });
@@ -163,17 +155,12 @@ window.addEventListener("resize",this.updateDimensions);
 
                   if (jsonGetSolution.stdout) {
                         const output = atob(jsonGetSolution.stdout);
-// console.log(output);
-                        // const test = this.state.users.message;
+
 
                         outputText.innerHTML = "";
 
                         outputText.innerHTML += `Output:\n${output}\nExecution Time: ${jsonGetSolution.time} Secs\nMemory Used : ${jsonGetSolution.memory} bytes`;
-                        // if (output === test)
-                        //       outputText.innerHTML += "\n\nCorrect Answer";
-                        // else
-                        //       outputText.innerHTML += "\n\nWrong Answer";
-                        //
+
                          }
                   else if (jsonGetSolution.stderr) {
                         const error = atob(jsonGetSolution.stderr);
@@ -195,12 +182,11 @@ window.addEventListener("resize",this.updateDimensions);
                   let outputText = document.getElementById("output");
                   outputText.innerHTML = "";
                   outputText.innerHTML += "Creating Submission\n";
-// console.log(this.props.tc);
                   const response = await fetch("https://judge0-ce.p.rapidapi.com/submissions", {
                         method: "POST",
                         headers: {
-                              "x-rapidapi-host": "judge0-ce.p.rapidapi.com",
-                              "x-rapidapi-key": "e535d12d26msh1fe73d90a985d7ap1b0b2ajsnacb9e34ab20e",
+                              "x-rapidapi-host": process.env.REACT_APP_RAPID_HOST,
+                              "x-rapidapi-key":process.env.REACT_APP_RAPID_KEY,
                               "content-type": "application/json",
                               accept: "application/json"
                         },
@@ -230,8 +216,8 @@ window.addEventListener("resize",this.updateDimensions);
                               const getSolution = await fetch(url, {
                                     method: "GET",
                                     headers: {
-                                          "x-rapidapi-key": "e535d12d26msh1fe73d90a985d7ap1b0b2ajsnacb9e34ab20e",
-                                          "x-rapidapi-host": "judge0-ce.p.rapidapi.com",
+                                          "x-rapidapi-key": process.env.REACT_APP_RAPID_KEY,
+                                          "x-rapidapi-host": process.env.REACT_APP_RAPID_HOST,
                                           "content-type": "application/json"
                                     }
                               });
@@ -250,36 +236,42 @@ const t1 = JSON.stringify(output);
                         outputText.innerHTML = "";
 
                         outputText.innerHTML += `\nExecution Time: ${jsonGetSolution.time} Secs\nMemory Used : ${jsonGetSolution.memory} bytes`;
-                        if (t1===this.props.ans){
-                              const url = window.location.href
-const x = url.lastIndexOf("/")
-const y = url.substring(x+1);
-console.log(url,x,y)
-const link = y
-const name = this.props.problemName
-const queSet = {name,link}
-axios.post('http://localhost:4000/api/user/ques-done', queSet, {
+                        const url = window.location.href
+                        const x = url.lastIndexOf("/")
+                        const y = url.substring(x+1);
+                        const link = y
+                        const name = this.props.problemName
+                        const queSet = {name,link}
+const ans = {t1,name,link}
+axios.post('https://codeitoutserver.herokuapp.com/api/question/checkAnswer',{ans},{
       headers: {
             Authorization: `Bearer ${localStorage.getItem("userLoggedToken")}`
       }
 
-      }).then(e =>{
+      }).then(res=>{
+            this.setState({
+      verdict:"Correct Answer",
+      icon:"far fa-check-circle correct fa-3x"
+      })
+            axios.post('https://codeitoutserver.herokuapp.com/api/user/ques-done', queSet, {
+                  headers: {
+                        Authorization: `Bearer ${localStorage.getItem("userLoggedToken")}`
+                  }
 
-console.log(queSet)
+                  }).then(res =>{
+
+            }).catch(err=>{
+
+            })
+
 }).catch(err=>{
-console.log(err)
-})
       this.setState({
-verdict:"Correct Answer",
-icon:"far fa-check-circle correct fa-3x"
+      verdict:"Wrong Answer",
+      icon:"far wrong fa-times-circle fa-3x"
+      })
 })
-}
-                        else{
-                              this.setState({
-                        verdict:"Wrong Answer",
-                        icon:"far wrong fa-times-circle fa-3x"
-                        })
-}
+
+
                         }
                   else if (jsonGetSolution.stderr) {
                         const error = atob(jsonGetSolution.stderr);
@@ -315,8 +307,8 @@ icon:"far fa-check-circle correct fa-3x"
 
                         <div className="col-lg-7 col-md-12 col-sm-12">
                               <label htmlFor="solution">
-                                    <span class="badge cc-heading-2 bg-secondary">Code
-                                          <i class="fas source-logo fa-server"></i>
+                                    <span className="badge cc-heading-2 bg-secondary">Code
+                                          <i className="fas source-logo fa-server"></i>
                                     </span>
 <span className="badge cc-heading-2 bg-secondary prob-name-com">{this.props.problemName}
 
@@ -327,10 +319,10 @@ icon:"far fa-check-circle correct fa-3x"
 
 
                                     <button type="submit" className="btn btn-dark cc-run-btn btn-lg" onClick={this.run}>
-                                                                        <i class="fas run-icon fa-cogs"></i>Run
+                                                                        <i className="fas run-icon fa-cogs"></i>Run
                                                                   </button>
 <button type="submit" className="btn btn-dark cc-run-btn btn-lg" onClick={ this.submit}>
-                                    <i class="fas run-icon fa-cogs"></i>Submit
+                                    <i className="fas run-icon fa-cogs"></i>Submit
                               </button>
 <br/>
                               <label htmlFor="tags">
@@ -354,7 +346,7 @@ icon:"far fa-check-circle correct fa-3x"
 
                               <textarea className="cc-input" id="input" onChange={this.userInput}></textarea>
                               <br/>
-                              <span class="badge  badge-in cc-heading-1 bg-secondary">Output
+                              <span className="badge  badge-in cc-heading-1 bg-secondary">Output
                                     <i className="fas input-btn fa-laptop-code"></i>
                               </span>
                               <br/>

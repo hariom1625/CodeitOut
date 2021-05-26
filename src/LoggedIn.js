@@ -8,8 +8,8 @@ import Instructions from './components/Instructions/Instructions.js';
 import DrawingBoard from './components/DrawingBoard/DrawingBoard.js';
 import Footer from './components/Footer/Footer.js';
 import ScrollToTop from './components/StTop.js';
-import Login from './Admin/Login.js';
-import AdminPage from './Admin/AdminPage.js';
+// import Login from './Admin/Login.js';
+// import AdminPage from './Admin/AdminPage.js';
 import Logout from './Admin/Logout.js';
 import SignUp from './components/Register/SignUp.js';
 import SignIn from './components/Register/SignIn.js';
@@ -39,7 +39,7 @@ class LoggedIn extends React.Component {
 
       }
       componentDidMount() {
-            // axios.get('http://localhost:4000/api/User/login-success', {
+            // axios.get('https://codeitoutserver.herokuapp.com/api/User/login-success', {
             //       headers: {
             //             Authorization: `Bearer ${localStorage.getItem("userLoggedToken")}`
             //       }
@@ -75,9 +75,8 @@ class LoggedIn extends React.Component {
                                     <Route exact path="/Questionlist/:addr" urlString={`/QuestionList/:addr`} component={Q1}/>
                                     <Route exact path="/Resources" component={Resources}/>
                                     <Route exact path="/Instructions" component={Instructions}/>
-                                    <Route exact path="/Drawing" component={ScrollToTop(DrawingBoard)}/>
-                                    <Route exact path="/Admin/Login" component={ScrollToTop(Login)}/>
-                                    <Route exact path="/AdminPage" component={ScrollToTop(AdminPage)}/>
+                                    <Route exact path="/DrawingBoard" component={ScrollToTop(DrawingBoard)}/>
+
                                     <Route exact path="/Logout" component={ScrollToTop(Logout)}/>
                                     <Route exact path="/SignUp" component={(props) => (<SignUp timestamp={new Date().toString()} {...props}/>)}/>
                                     <Route exact path="/SignIn" component={(props) => (<SignIn timestamp={new Date().toString()} {...props}/>)}/>
@@ -103,6 +102,8 @@ class LoggedIn extends React.Component {
 }
 
 export default LoggedIn;
+// <Route exact path="/Admin/Login" component={ScrollToTop(Login)}/>
+// <Route exact path="/AdminPage" component={ScrollToTop(AdminPage)}/>
 // <Route  path={`/Q${x}`} component={ScrollToTop(Q1)}/>
 // <GoogleLogin buttonText="Login" onSuccess={this.responseGoogle} onFailure={this.responseGoogle} cookiePolicy={'single_host_origin'}/>
 // responseGoogle = (response) => {

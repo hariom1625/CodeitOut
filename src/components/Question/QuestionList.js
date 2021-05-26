@@ -27,10 +27,13 @@ class QuestionList extends React.Component {
       }
 
       componentDidMount() {
+            axios.get(process.env.REACT_APP_DEMO,{
 
-            axios.get(" https://codeitoutserver.herokuapp.com/api/question").then((res) => {
+            headers:{
+            authorization:`Bearer ${process.env.REACT_APP_TC_TOKEN}`
+            }
+            }).then((res) => {
                   this.setState({questions: res.data});
-                  console.log(this.state.questions);
 
 
                                     if(res.data>0){
@@ -47,7 +50,6 @@ class QuestionList extends React.Component {
 
       onHandleClick = (event)=> {
 const id = event;
-// console.log(id);
 this.setState({customLink:id});
 <Q1 qu ={id}/>
 
@@ -56,13 +58,13 @@ this.setState({customLink:id});
 // const q=1;
 const que = this.state.questions.map((question) => {
 return(
-      <div className="container-fluid">
+      <div key={question._id}  className="container-fluid">
 
 
 
 
 
-                        <div key={question.id} className="container prob-container">
+                        <div  className="container prob-container">
                               <div className="list-group">
 <Link to={`/questionlist/${question.problemCode}`}>
                                 <button type="button" onClick = {(event) => {this.onHandleClick(question.id)}} className=" prob-btn list-group-item list-group-item-action active" aria-current="true">

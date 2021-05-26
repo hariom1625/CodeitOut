@@ -35,20 +35,22 @@ class ForgotVerify extends React.Component {
                   otp
             }
 
-            axios.put(' https://codeitoutserver.herokuapp.com/api/User/forgotPwdVerify', sendOtp).then((res) => {
+            axios.put('https://codeitoutserver.herokuapp.com/api/User/forgotPwdVerify', sendOtp,{
+
+            headers:{
+            authorization:`Bearer ${process.env.REACT_APP_TC_TOKEN}`
+            }
+            }).then((res) => {
                   notify.show(res.data,"custom", 2000, customNotify)
                   this.setState({success: 1})
             }).catch(err => {
 
                   const res = err.response.data
                   this.setState({success: 0})
-                  console.log(this.state.success)
                   alert(res)
-                  console.log(res)
             });
       }
       render() {
-            console.log(this.state.success)
 
             if (this.state.success === 1) {
                   return (<Redirect to='/success'/>)

@@ -9,7 +9,15 @@ margin-left: 50px;
 margin-bottom: 40px;
 
 }
+.otp{
+text-align: center;
+margin-top: 40px;
+}
 
+.otp-btn{
+float: right;
+margin-right: 50px;
+}
 .email-input{
 margin-top: 20px;
 margin-left: auto;

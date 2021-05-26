@@ -4,10 +4,16 @@ import axios from 'axios';
 import App from './App';
 
 const token = localStorage.getItem("userRefreshToken")
-axios.post(' https://codeitoutserver.herokuapp.com/api/user/token', {token}).then(res=>{
+axios.post('https://codeitoutserver.herokuapp.com/api/user/token', {token},{
+
+headers:{
+authorization:`Bearer ${process.env.REACT_APP_TC_TOKEN}`
+}
+}).then(res=>{
 
 localStorage.setItem("userLoggedToken",res.data.accessToken)
-}).catch(err=> console.log(err))
+}).catch(err => {
+})
 
 
 ReactDOM.render(

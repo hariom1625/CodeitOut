@@ -8,8 +8,7 @@ import Instructions from './components/Instructions/Instructions.js';
 import DrawingBoard from './components/DrawingBoard/DrawingBoard.js';
 import Footer from './components/Footer/Footer.js';
 import ScrollToTop from './components/StTop.js';
-import Login from './Admin/Login.js';
-import AdminPage from './Admin/AdminPage.js';
+
 import Logout from './Admin/Logout.js';
 import SignUp from './components/Register/SignUp.js';
 import SignIn from './components/Register/SignIn.js';
@@ -46,12 +45,9 @@ componentDidMount(){
             this.setState({loggedIn:res.data})
 
 
-            // console.log(this.state.userDetail)
 
       }).catch((err) => {
             this.setState({loggedIn:false})
-            console.log(err)
-
       })
 
       window.scrollTo(0, 0);
@@ -73,9 +69,7 @@ componentDidMount(){
                                           <Route exact path="/Questionlist/:addr" urlString={`/QuestionList/:addr`} component={Q1}/>
                                           <Route exact path="/Resources" component={Resources}/>
                                           <Route exact path="/Instructions" component={Instructions}/>
-                                          <Route exact path="/Drawing" component={ScrollToTop(DrawingBoard)}/>
-                                          <Route exact path="/Admin/Login" component={ScrollToTop(Login)}/>
-                                          <Route exact path="/AdminPage" component={ScrollToTop(AdminPage)}/>
+                                                <Route exact path="/DrawingBoard" component={ScrollToTop(DrawingBoard)}/>
                                           <Route exact path="/Logout" component={ScrollToTop(Logout)}/>
                                           <Route exact path="/SignUp" component={(props) => (<SignUp timestamp={new Date().toString()} {...props}/>)}/>
                                           <Route exact path="/SignIn" component={(props) => (<SignIn timestamp={new Date().toString()} {...props}/>)}/>

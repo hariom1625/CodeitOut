@@ -30,25 +30,30 @@ class OtpVerify extends React.Component {
       onFormSubmit = (e) => {
             e.preventDefault()
             const {otp} = this.state
-
+const id = localStorage.getItem("id");
             const sendOtp = {
-                  otp
+                  otp,id
             }
 
-            axios.post(' https://codeitoutserver.herokuapp.com/api/User/verify', sendOtp).then((res) => {
+            axios.post('https://codeitoutserver.herokuapp.com/api/User/verify', sendOtp,{
+
+            headers:{
+            authorization:`Bearer ${process.env.REACT_APP_TC_TOKEN}`
+            }
+            }).then((res) => {
                   notify.show(res.data,"custom", 2000, customNotify)
                   this.setState({success: 1})
+localStorage.removeItem("id");
             }).catch(err => {
 
                   const res = err.response.data
                   this.setState({success: 0})
-                  console.log(this.state.success)
                   alert(res)
-                  console.log(res)
+                  localStorage.removeItem("id");
+
             });
       }
       render() {
-            console.log(this.state.success)
 
             if (this.state.success === 1) {
                   return (<Redirect to='/success'/>)
@@ -67,7 +72,7 @@ class OtpVerify extends React.Component {
                               </div>
 
 
-                        <button className="btn btn-lg btn-dark btn-block" type="submit" name="signup">Sign Up</button>
+                        <button className="btn btn-lg btn-dark btn-block" type="submit" name="signup">Verify</button>
 
                   </form>
             </div>

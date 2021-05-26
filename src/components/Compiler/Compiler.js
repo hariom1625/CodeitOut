@@ -1,6 +1,7 @@
 import React from 'react';
 import './Compiler.css';
 import MonacoEditor from 'react-monaco-editor';
+// import axios from 'axios';
 
 class Compiler extends React.Component {
       constructor(props) {
@@ -20,7 +21,10 @@ height:600
       }
 
       componentDidMount() {
-
+            // axios.get("http://localhost:4000/").then((res) => {
+            //
+            //       this.setState({users: res.data});
+            // })
 
 window.addEventListener("resize",this.updateDimensions);
       }
@@ -30,12 +34,10 @@ componentWillUnmount(){
 
 }
       editorDidMount(editor, monaco) {
-            // console.log('editorDidMount', editor);
             editor.focus();
 
       }
       onChange = (newValue, e) => {
-            // console.log('onChange', newValue, e);
             this.setState({input: newValue});
             localStorage.setItem('input', newValue);
 
@@ -52,7 +54,6 @@ componentWillUnmount(){
       };
 
       language = (event) => {
-            // console.log(event.target.value);
 
             event.preventDefault();
             this.setState({language_id: event.target.value});
@@ -105,17 +106,16 @@ if(window.innerWidth<=300){
             let outputText = document.getElementById("output");
             outputText.innerHTML = "";
             outputText.innerHTML += "Creating Submission\n";
-            const response = await fetch("https://38a4f330.compilers.sphere-engine.com/api/v4/", {
+            const response = await fetch("https://judge0-ce.p.rapidapi.com/submissions", {
                   method: "POST",
                   headers: {
-                        // "x-rapidapi-host": "judge0-ce.p.rapidapi.com",
-                        // "x-rapidapi-key": "e535d12d26msh1fe73d90a985d7ap1b0b2ajsnacb9e34ab20e",
+                        "x-rapidapi-host":process.env.REACT_APP_RAPID_HOST,
+                        "x-rapidapi-key": process.env.REACT_APP_RAPID_KEY,
                         "content-type": "application/json",
                         accept: "application/json"
                   },
                   body: JSON.stringify({source_code: this.state.input, stdin: this.state.user_input, language_id: this.state.language_id})
             });
-
             outputText.innerHTML += "Submission Created/n";
             const jsonResponse = await response.json();
 
@@ -138,8 +138,8 @@ if(window.innerWidth<=300){
                         const getSolution = await fetch(url, {
                               method: "GET",
                               headers: {
-                                    "x-rapidapi-key": "e535d12d26msh1fe73d90a985d7ap1b0b2ajsnacb9e34ab20e",
-                                    "x-rapidapi-host": "judge0-ce.p.rapidapi.com",
+                                    "x-rapidapi-key": process.env.REACT_APP_RAPID_KEY,
+                                    "x-rapidapi-host": process.env.REACT_APP_RAPID_HOST,
                                     "content-type": "application/json"
                               }
                         });

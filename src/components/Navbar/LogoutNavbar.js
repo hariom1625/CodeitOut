@@ -6,7 +6,6 @@ import axios from 'axios';
 // setTimeout( () => {
 // window.location.reload(false)
 // },500);
-// console.log("Reload")
 // }
 
 
@@ -24,37 +23,46 @@ class LogoutNavbar extends Component {
 
     changed(){
         const ext = document.URL;
-        //console.log(ext);
         //const conti = ext.includes("00/");
         if(ext.length > 22)
         {
             const n = ext.lastIndexOf("/");
             const exten = ext.substring(n+1);
-            //console.log(exten);
             if(exten === 'questionlist'){
                 this.setState({active:'Questions List'});}
             if(exten === 'resources'){
                 this.setState({active:'Resources'});}
+                if(exten === 'Drawing Board'){
+                 this.setState({active:'Drawing Board'});}
                 if(exten === 'Profile'){
                   this.setState({active:'Profile'});}
+
         }
         else{
             this.setState({active:'Home'});
         }
 
-        //console.log(this.state.active);
     }
     refreshPage ()  {
    setTimeout( () => {
    window.location.reload(false)
    },200);
-   console.log("Reload")
    }
 
 signout = () => {
-      const refreshToken  = this.state.refreshToken
+      const refreshToken  = localStorage.getItem("userRefreshToken")
+axios({
+method:'DELETE',
+url:'https://codeitoutserver.herokuapp.com/api/user/logout-refreshToken',
+data:{
+refreshToken:refreshToken
+},
+headers:{ authorization:`Bearer ${process.env.REACT_APP_TC_TOKEN}`
+}
 
-      axios.delete('https://codeitoutserver.herokuapp.com/api/user/logout-refreshToken', {refreshToken}).then(res => {
+})
+
+.then(res => {
 
             localStorage.removeItem("userLoggedToken");
 
@@ -64,7 +72,6 @@ this.refreshPage();
       // notify.show("Logged Out Successfully","custom",2000,customNotify)
       })
       .catch(err=> {
-      console.log(err)
       })
 
 
@@ -98,16 +105,20 @@ this.refreshPage();
                         <hr className="d-md-none"></hr> <li className={(this.state.active==='Resources')?"nav-item mx-3 px-3 active":"nav-item mx-3 px-3"} onClick={() => { this.changed();
                             window.location.href="/resources";}}>Resources</li>
                         </Link>
-
+                        <Link to ="/DrawingBoard" rel="noopener noreferrer" id="navLink">
+                        <hr className="d-md-none"></hr> <li className={(this.state.active==='Drawing Board')?"nav-item mx-3 px-3 active":"nav-item mx-3 px-3"} onClick={() => { this.changed();
+                         this.refreshPage();   window.location.href="/DrawingBoard";}}>Drawing Board</li>
+                        </Link>
                         <Link to ="/Profile" target="_blank" rel="noopener noreferrer" id="navLink">
                         <hr className="d-md-none"></hr> <li className={(this.state.active==='Resources')?"nav-item mx-3 px-3 active":"nav-item mx-3 px-3"} onClick={() => { this.changed();
                          this.refreshPage();   window.location.href="/Profile";}}>Profile</li>
                         </Link>
 
+
                     </ul>
 
 <div className="btn-grp">
-                            <button onClick={this.signout }className="btn signin-nav btn-lg btn-dark btn-block"  name="SignOut">
+                            <button onClick={this.signout } className="btn signin-nav btn-lg btn-dark btn-block"  name="SignOut">
 Sign Out
 </button>
 {this.state.isClicked===true?<Redirect to="/"/>: null}

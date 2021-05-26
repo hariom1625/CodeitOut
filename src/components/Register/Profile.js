@@ -14,17 +14,20 @@ class Profile extends React.Component {
       componentDidMount() {
 
             const token = localStorage.getItem("userRefreshToken")
-            axios.post(' https://codeitoutserver.herokuapp.com/api/user/token', {token}).then(res => {
+            axios.post('https://codeitoutserver.herokuapp.com/api/user/token', {token},{
 
-                  axios.get(' https://codeitoutserver.herokuapp.com/api/User/profile', {
+            headers:{
+            authorization:`Bearer ${process.env.REACT_APP_TC_TOKEN}`
+            }
+            }).then(res => {
+
+                  axios.get('https://codeitoutserver.herokuapp.com/api/User/profile', {
                         headers: {
                               Authorization: `Bearer ${res.data.accessToken}`
                         }
 
                   }).then((res) => {
                         this.setState({userDetail: res.data, quesol: res.data[0].queset})
-                        console.log(res.data[0].queset)
-                        console.log(this.state.quesol)
 
                         if (res.data > 0) {
                               this.setState({loaded: true})
@@ -38,15 +41,17 @@ class Profile extends React.Component {
 
                   })
 
-            }).catch(err => console.log(err))
+            }).catch(err => {
+
+})
 
       }
       render() {
 
             const prof = this.state.userDetail.map((detail) => {
                   return (
-<div >
-<div className=" prof-cont container ">
+<div key={detail.id}  >
+<div  className=" prof-cont container ">
 <div className="row">
                         <div className="  col-5">
                               <h4 className="prof-name">Name :</h4>
@@ -83,7 +88,7 @@ class Profile extends React.Component {
 
                                           this.state.quesol.map(que => {
                                                 return (
-<button className="quesol-btn btn-sm">
+<button key={detail.id} className="quesol-btn btn-sm">
 <Link to={`/questionlist/${que.link}`}>
                                                       <span className="quesol-name">
                                                             {que.name}

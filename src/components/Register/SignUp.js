@@ -27,6 +27,7 @@ firstname:'',
 lastname:'',
 email:'',
 resetPwd: '',
+password:'',
 
                   username: '',
                   success:0,
@@ -48,17 +49,21 @@ loggedIn
 
 const user = {firstname,lastname,email,password,username,resetPwd}
 
-axios.post(' https://codeitoutserver.herokuapp.com/api/User/signup',user)
+axios.post('https://codeitoutserver.herokuapp.com/api/User/signup',user,{
+
+headers:{
+authorization:`Bearer ${process.env.REACT_APP_TC_TOKEN}`
+}
+})
 .then((res) => {
 notify.show('OTP sent',"custom", 2000, customNotify)
 this.setState({success:1})
-console.log(res)
+localStorage.setItem("id",res.data)
 })
 .catch(err =>{
 
 const res = err.response.data
 alert(res)
-console.log(err)
 });
 
       }

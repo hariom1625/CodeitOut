@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 // import Q2 from './Q2.js';
-import {Link} from 'react-router-dom';
 import Loader from '../../Loader/Loader.js';
 import './Q1.css';
 import CompilerCheck from '../CompilerCheck.js';
@@ -11,7 +10,8 @@ class Q1 extends React.Component {
             super(props);
 
             this.state = {
-                  questions: []
+                  questions: [],
+tc:[]
                   //                   question:{
                   //                         name:'',
                   // stmnt:'',
@@ -27,11 +27,13 @@ class Q1 extends React.Component {
       componentDidMount() {
             const str = window.location.pathname;
             const addr = str.substring(13)
-            console.log(str);
-            console.log(addr);
-            axios.get(` https://codeitoutserver.herokuapp.com/api/question/${addr}`).then((res) => {
+
+            axios.get(`https://codeitoutserver.herokuapp.com/api/question/${addr}`,{
+            headers:{
+            authorization:`Bearer ${process.env.REACT_APP_TC_TOKEN}`
+            }
+            }).then((res) => {
                   this.setState({questions: res.data});
-                  console.log(this.state.question);
                   if (res.data > 0) {
 
                         this.setState({loaded: true})
@@ -40,16 +42,40 @@ class Q1 extends React.Component {
                   }
                   window.scrollTo(0, 0);
 
-            });
+            }).catch(err=>{
+
+})
+            const token = localStorage.getItem("userRefreshToken")
+
+            axios.post('https://codeitoutserver.herokuapp.com/api/user/token', {token},{
+
+            headers:{
+            authorization:`Bearer ${process.env.REACT_APP_TC_TOKEN}`
+            }
+            }).then(res=>{
+                  axios.get(`https://codeitoutserver.herokuapp.com/api/question/answer${addr}`, {
+                        headers: {
+                              Authorization: `Bearer ${res.data.accessToken}`
+                        }
+
+                  }).then((res) => {
+                        this.setState({tc:res.data})
+
+                        }).catch((err)=>{
+                        })
+
+}).catch(err=>{
+
+})
 
       }
 
       render() {
+
             // const {questions} = this.state
             const id = this.props.qu
-            // console.log(id);
             const que = this.state.questions.map((question) => {
-                  return (<div className="Q1">
+                  return (<div key={question.id} className="Q1">
 
                         <div className="container prob-container">
                               <h3 className="prob-head-q1">
@@ -64,7 +90,7 @@ class Q1 extends React.Component {
                               </p>
 
                               <h3 className="prob-input-head">
-                                    Output</h3 >
+                                    Output </h3 >
                               <p className="prob-input">
                                     {question.problemOutputDesc}
                               </p>
@@ -73,12 +99,9 @@ class Q1 extends React.Component {
                               </h5 >
                         </div >
 <div className="container">
-                        <CompilerCheck ansid={id} tc={question.input} ans ={question.ans} problemName={question.problemName}/>
+                        <CompilerCheck ansid={id} tc={this.state.tc.input} ans ={this.state.tc.ans} problemName={question.problemName}/>
 </div>
-<button className="btn btn-dark instruct-btn btn-lg">
-                              <Link className="instruct-link" to="/Instructions">
-                                    Read Instructions</Link>
-                        </button>
+
                   </div>)
             })
 
