@@ -109,10 +109,10 @@ this.refreshPage();
                         <hr className="d-md-none"></hr> <li className={(this.state.active==='Drawing Board')?"nav-item mx-3 px-3 active":"nav-item mx-3 px-3"} onClick={() => { this.changed();
                          this.refreshPage();   window.location.href="/DrawingBoard";}}>Drawing Board</li>
                         </Link>
-                        <Link to ="/Profile" target="_blank" rel="noopener noreferrer" id="navLink">
+                        <a href ="/Profile" id="navLink">
                         <hr className="d-md-none"></hr> <li className={(this.state.active==='Resources')?"nav-item mx-3 px-3 active":"nav-item mx-3 px-3"} onClick={() => { this.changed();
                          this.refreshPage();   window.location.href="/Profile";}}>Profile</li>
-                        </Link>
+                        </a>
 
 
                     </ul>

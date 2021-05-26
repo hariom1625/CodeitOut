@@ -17,11 +17,11 @@ let customNotify = {
 
 }
 
-function refreshPage() {
-      setTimeout(() => {
-            window.location.reload(false)
-      }, 50);
-}
+// function refreshPage() {
+//       setTimeout(() => {
+//             window.location.reload(false)
+//       }, 50);
+// }
 
 class SignIn extends React.Component {
 
@@ -107,10 +107,10 @@ class SignIn extends React.Component {
                   if (loggedIn === true) {
                         return (<div>
                               <Notifications/>
-                              <Link href="/profile">
-                                    <button onClick={refreshPage} className="btn signin-btn btn-lg btn-dark btn-block" type="submit" name="signup">Go to Profile</button>
+                              <a href="/profile">
+                                    <button className="btn signin-btn btn-lg btn-dark btn-block" type="submit" name="signup">Go to Profile</button>
 
-                              </Link>
+                              </a>
                         </div>)
                   } else {
 
