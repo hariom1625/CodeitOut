@@ -27,7 +27,7 @@ class QuestionList extends React.Component {
       }
 
       componentDidMount() {
-            axios.get(process.env.REACT_APP_DEMO,{
+            axios.get('https://codeitoutserver.herokuapp.com/api/question',{
 
             headers:{
             authorization:`Bearer ${process.env.REACT_APP_TC_TOKEN}`

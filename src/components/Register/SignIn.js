@@ -111,10 +111,10 @@ class SignIn extends React.Component {
                   if (loggedIn === true) {
                         return (<div>
                               <Notifications/>
-                              <a href="/profile">
+                              <Link href="/profile">
                                     <button onClick={refreshPage} className="btn signin-btn btn-lg btn-dark btn-block" type="submit" name="signup">Go to Profile</button>
 
-                              </a>
+                              </Link>
                         </div>)
                   } else {
 
