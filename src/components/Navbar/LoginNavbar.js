@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
 
-function refreshPage ()  {
-setTimeout( () => {
-window.location.reload(false)
-},50);
-}
+// function refreshPage ()  {
+// setTimeout( () => {
+// window.location.reload(false)
+// },50);
+// }
 class LoginNavbar extends Component {
 
     constructor(props) {
@@ -42,11 +42,11 @@ class LoginNavbar extends Component {
 
     }
 
-    refreshPage ()  {
-    setTimeout( () => {
-    window.location.reload(false)
-    },50);
-    }
+    // refreshPage ()  {
+    // setTimeout( () => {
+    // window.location.reload(false)
+    // },50);
+    // }
 
     render(){
 
@@ -63,33 +63,33 @@ class LoginNavbar extends Component {
 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ml-auto text-center">
-                        <Link to ="/" id="navLink">
+                        <a href ="/" id="navLink">
                         <hr className="d-md-none"></hr><li className={(this.state.active==='Home')?"nav-item mx-3 px-3 active":"nav-item mx-3 px-3"} onClick={() =>{ this.changed();
                             window.location.href="/";}}>Home</li>
-                        </Link>
+                        </a>
 
-                        <Link to="/questionlist" id="navLink">
+                        <a href="/questionlist" id="navLink">
                         <hr className="d-md-none"></hr> <li className={(this.state.active==='Questions List')?"nav-item mx-3 px-3 active":"nav-item mx-3 px-3"} onClick={() =>{ this.changed();
                             window.location.href="/questionlist";}}>Questions List</li>
-                        </Link>
+                        </a>
 
-                        <Link to ="/resources" id="navLink">
+                        <a href ="/resources" id="navLink">
                         <hr className="d-md-none"></hr> <li className={(this.state.active==='Resources')?"nav-item mx-3 px-3 active":"nav-item mx-3 px-3"} onClick={() => { this.changed();
                             window.location.href="/resources";}}>Resources</li>
-                        </Link>
-                        <Link to ="/DrawingBoard" target="_blank" rel="noopener noreferrer" id="navLink">
+                        </a>
+                        <a href ="/DrawingBoard" target="_blank" rel="noopener noreferrer" id="navLink">
                         <hr className="d-md-none"></hr> <li className={(this.state.active==='Drawing Board')?"nav-item mx-3 px-3 active":"nav-item mx-3 px-3"} onClick={() => { this.changed();
-                         this.refreshPage();   window.location.href="/DrawingBoard";}}>Drawing Board</li>
-                        </Link>
+                           window.location.href="/DrawingBoard";}}>Drawing Board</li>
+                        </a>
 
                     </ul>
 <div className="btn-grp">
-                    <Link to="/SignIn">
-                                <button onClick={refreshPage} className="btn signin-nav btn-lg btn-dark btn-block" type="submit" name="SignIn"> Sign In </button>
-                   </Link>
-                   <Link to="/SignUp">
-                        <button onClick={refreshPage} className="btn signin-nav btn-lg btn-dark btn-block" type="submit" name="SignUp"> Sign Up </button>
-                   </Link>
+                    <a href="/SignIn">
+                                <button  className="btn signin-nav btn-lg btn-dark btn-block" type="submit" name="SignIn"> Sign In </button>
+                   </a>
+                   <a href="/SignUp">
+                        <button  className="btn signin-nav btn-lg btn-dark btn-block" type="submit" name="SignUp"> Sign Up </button>
+                   </a>
                 </div>
 </div>
 
