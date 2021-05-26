@@ -71,13 +71,13 @@ componentDidMount(){
                                           <Route exact path="/Instructions" component={Instructions}/>
                                                 <Route exact path="/DrawingBoard" component={ScrollToTop(DrawingBoard)}/>
                                           <Route exact path="/Logout" component={ScrollToTop(Logout)}/>
-                                          <Route exact path="/SignUp" component={(props) => (<SignUp timestamp={new Date().toString()} {...props}/>)}/>
-                                          <Route exact path="/SignIn" component={(props) => (<SignIn timestamp={new Date().toString()} {...props}/>)}/>
-                                          <Route exact path="/ASU" component={(props) => (<ASU timestamp={new Date().toString()} {...props}/>)}/>
+                                                <Route exact path="/SignUp" component={SignUp}/>
+                                                <Route exact path="/SignIn" component={SignIn}/>
+                                                <Route exact path="/ASU" component={ASU}/>
                                           <Route exact path="/Verify" component={ScrollToTop(Verify)}/>
                                           <Route exact path="/Success" component={ScrollToTop(Success)}/>
                                           <Route exact path="/Failure" component={ScrollToTop(Failure)}/>
-                                          <Route exact path="/Profile" component={(props) => (<Profile timestamp={new Date().getTime().toString()} {...props}/>)}/>
+                                          <Route exact path="/Profile" component={Profile}/>
                                                 <Route exact path="/ForgotPassword"  component={ScrollToTop(ForgotPwd)}/>
                                                       <Route exact path="/ForgotVerify"  component={ScrollToTop(ForgotVerify)}/>
 <Route component={Error}/>
