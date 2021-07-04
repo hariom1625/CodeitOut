@@ -34,7 +34,7 @@ class OtpVerify extends React.Component {
     };
 
     axios
-      .post("http://localhost:4000/api/User/verify", sendOtp, {
+      .post("https://codeitoutserver.herokuapp.com/api/User/verify", sendOtp, {
         headers: {
           authorization: `Bearer ${process.env.REACT_APP_TC_TOKEN}`,
         },
