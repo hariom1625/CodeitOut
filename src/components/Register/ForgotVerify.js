@@ -1,84 +1,95 @@
-import React from 'react';
-import './SignUp.css';
-import axios from 'axios'
-import {Redirect} from 'react-router-dom';
+import React from "react";
+import "./SignUp.css";
+import axios from "axios";
+import { Redirect } from "react-router-dom";
 
-import Notifications, {notify} from 'react-notify-toast';
+import Notifications, { notify } from "react-notify-toast";
 
 let customNotify = {
-background:"#000",
-text:"#fff"
-
-}
+  background: "#000",
+  text: "#fff",
+};
 class ForgotVerify extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      otp: "",
+      success: -1,
+    };
+  }
 
-      constructor(props) {
-            super(props)
-            this.state = {
-                  otp: '',
-                  success: -1
-            }
-      }
+  onChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  };
 
-      onChange = (event) => {
+  onFormSubmit = (e) => {
+    e.preventDefault();
+    const { otp } = this.state;
 
-            this.setState({
-                  [event.target.name]: event.target.value
-            })
-      }
+    const sendOtp = {
+      otp,
+    };
 
-      onFormSubmit = (e) => {
-            e.preventDefault()
-            const {otp} = this.state
+    axios
+      .put(
+        "https://codeitoutserver.herokuapp.com/api/User/forgotPwdVerify",
+        sendOtp,
+        {
+          headers: {
+            authorization: `Bearer ${process.env.REACT_APP_TC_TOKEN}`,
+          },
+        }
+      )
+      .then((res) => {
+        notify.show(res.data, "custom", 2000, customNotify);
+        this.setState({ success: 1 });
+      })
+      .catch((err) => {
+        // const res = err.response.data
+        this.setState({ success: 0 });
+        // alert(res)
+      });
+  };
+  render() {
+    if (this.state.success === 1) {
+      return <Redirect to="/success" />;
+    } else if (this.state.success === 0) {
+      return <Redirect to="/failure" />;
+    }
+    return (
+      <div className="otp">
+        <Notifications />
+        <div className="outer">
+          <div className="inner">
+            <form onSubmit={this.onFormSubmit}>
+              <h4 className="otp-head">Verify Your Account</h4>
+              <div className="form-group">
+                <input
+                  required="required"
+                  type="text"
+                  name="otp"
+                  className="form-control"
+                  value={this.state.otp}
+                  onChange={this.onChange}
+                  placeholder="Enter OTP"
+                />
+              </div>
 
-            const sendOtp = {
-                  otp
-            }
-
-            axios.put('https://codeitoutserver.herokuapp.com/api/User/forgotPwdVerify', sendOtp,{
-
-            headers:{
-            authorization:`Bearer ${process.env.REACT_APP_TC_TOKEN}`
-            }
-            }).then((res) => {
-                  notify.show(res.data,"custom", 2000, customNotify)
-                  this.setState({success: 1})
-            }).catch(err => {
-
-                  // const res = err.response.data
-                  this.setState({success: 0})
-                  // alert(res)
-            });
-      }
-      render() {
-
-            if (this.state.success === 1) {
-                  return (<Redirect to='/success'/>)
-            } else if (this.state.success === 0) {
-                  return (<Redirect to='/failure'/>)
-            }
-            return (<div className="otp">
-                  <Notifications/>
-                        <div className="outer">
-                        <div className="inner">
-                  <form onSubmit={this.onFormSubmit}>
-                        <h4 className="otp-head">Verify Your Account</h4>
-                              <div className="form-group">
-
-                                    <input required="required" type="text" name="otp" className="form-control" value={this.state.otp} onChange={this.onChange} placeholder="Enter OTP"/>
-                              </div>
-
-
-                        <button className="btn btn-lg btn-dark btn-block" type="submit" name="signup">Sign Up</button>
-
-                  </form>
-            </div>
-</div>
-</div>
-
-
-)
-      }
+              <button
+                className="btn btn-lg btn-dark btn-block"
+                type="submit"
+                name="signup"
+              >
+                Sign Up
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default ForgotVerify;
