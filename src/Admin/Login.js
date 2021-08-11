@@ -33,10 +33,10 @@ loggedIn = false
             e.preventDefault()
             const {username, password} = this.state
 
-            if (username === 'A' && password === 'H') {
-localStorage.setItem("token","AH")
-                  this.setState({loggedIn: true})
-            }
+//             if (username === 'A' && password === 'H') {
+// localStorage.setItem("token","AH")
+//                   this.setState({loggedIn: true})
+//             }
       }
       render() {
 
