@@ -89,7 +89,7 @@ class AdminPage extends React.Component {
       })
       .then(() => {
         notify.show(
-          "Some error occured while posting Problem!",
+          "Problem Posted Successfully!",
           "custom",
           2000,
           customNotify
@@ -97,7 +97,7 @@ class AdminPage extends React.Component {
       })
       .catch((err) => {
         notify.show(
-          "Problem Posted Successfully!",
+          "Some error occured while posting Problem!",
           "custom",
           2000,
           customNotify
