@@ -63,7 +63,7 @@ class SignIn extends React.Component {
     };
 
     axios
-      .post("https://codeitoutserver.herokuapp.com/api/User/login", userLogin, {
+      .post(`${process.env.REACT_APP_SERVER}/api/User/login`, userLogin, {
         headers: {
           authorization: `Bearer ${process.env.REACT_APP_TC_TOKEN}`,
         },
@@ -128,6 +128,7 @@ class SignIn extends React.Component {
                   <div className="form-group">
                     <label>Username</label>
                     <input
+                      required
                       type="text"
                       name="username"
                       className="form-control "
@@ -140,6 +141,7 @@ class SignIn extends React.Component {
                   <div className="form-group">
                     <label>Password</label>
                     <input
+                      required
                       type="password"
                       name="password"
                       className="form-control "

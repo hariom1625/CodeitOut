@@ -3,11 +3,11 @@ import ReactDOM from "react-dom";
 import axios from "axios";
 import App from "./App";
 
-const token = localStorage.getItem("userRefreshToken");
+const token1 = localStorage.getItem("userRefreshToken");
 axios
   .post(
-    "https://codeitoutserver.herokuapp.com/api/user/token",
-    { token },
+    `${process.env.REACT_APP_SERVER}/api/user/token`,
+    { token1 },
     {
       headers: {
         authorization: `Bearer ${process.env.REACT_APP_TC_TOKEN}`,
@@ -16,6 +16,22 @@ axios
   )
   .then((res) => {
     localStorage.setItem("userLoggedToken", res.data.accessToken);
+  })
+  .catch((err) => {});
+const token2 = localStorage.getItem("art");
+
+axios
+  .post(
+    `${process.env.REACT_APP_SERVER}/api/admin/token`,
+    { token2 },
+    {
+      headers: {
+        authorization: `Bearer ${process.env.REACT_APP_TC_TOKEN}`,
+      },
+    }
+  )
+  .then((res) => {
+    localStorage.setItem("alt", res.data.accessToken);
   })
   .catch((err) => {});
 

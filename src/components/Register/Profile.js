@@ -10,11 +10,11 @@ class Profile extends React.Component {
   };
 
   componentDidMount() {
-    const token = localStorage.getItem("userRefreshToken");
+    const token1 = localStorage.getItem("userRefreshToken");
     axios
       .post(
-        "https://codeitoutserver.herokuapp.com/api/user/token",
-        { token },
+        `${process.env.REACT_APP_SERVER}/api/user/token`,
+        { token1 },
         {
           headers: {
             authorization: `Bearer ${process.env.REACT_APP_TC_TOKEN}`,
@@ -23,14 +23,14 @@ class Profile extends React.Component {
       )
       .then((res) => {
         axios
-          .get("https://codeitoutserver.herokuapp.com/api/User/profile", {
+          .get(`${process.env.REACT_APP_SERVER}/api/User/profile`, {
             headers: {
               Authorization: `Bearer ${res.data.accessToken}`,
             },
           })
           .then((res) => {
             this.setState({ userDetail: res.data, quesol: res.data[0].queset });
-
+            console.log(this.state.userDetail);
             if (res.data > 0) {
               this.setState({ loaded: true });
             } else {
@@ -45,9 +45,9 @@ class Profile extends React.Component {
       .catch((err) => {});
   }
   render() {
-    const prof = this.state.userDetail.map((detail) => {
+    const prof = this.state.userDetail.map((detail, idx) => {
       return (
-        <div key={detail.id}>
+        <div key={idx}>
           <div className=" prof-cont container ">
             <div className="row">
               <div className="  col-5">
@@ -81,9 +81,9 @@ class Profile extends React.Component {
               </div>
               <div className="  col-7">
                 <h5>
-                  {this.state.quesol.map((que) => {
+                  {this.state.quesol.map((que, idx) => {
                     return (
-                      <button key={detail.id} className="quesol-btn btn-sm">
+                      <button key={idx} className="quesol-btn btn-sm">
                         <Link to={`/questionlist/${que.link}`}>
                           <span className="quesol-name">{que.name}</span>
                         </Link>

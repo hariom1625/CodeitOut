@@ -22,6 +22,8 @@ class LogoutNavbar extends Component {
     if (ext.length > 22) {
       const n = ext.lastIndexOf("/");
       const exten = ext.substring(n + 1);
+      console.log(exten);
+
       if (exten === "questionlist") {
         this.setState({ active: "Questions List" });
       }
@@ -29,6 +31,29 @@ class LogoutNavbar extends Component {
         this.setState({ active: "Resources" });
       }
       if (exten === "Drawing Board") {
+        this.setState({ active: "Drawing Board" });
+      }
+      if (exten === "Profile") {
+        this.setState({ active: "Profile" });
+      }
+    } else {
+      this.setState({ active: "Home" });
+    }
+  }
+  componentDidMount() {
+    const ext = document.URL;
+    //const conti = ext.includes("00/");
+    if (ext.length > 22) {
+      const n = ext.lastIndexOf("/");
+      const exten = ext.substring(n + 1);
+
+      if (exten === "questionlist") {
+        this.setState({ active: "Questions List" });
+      }
+      if (exten === "resources") {
+        this.setState({ active: "Resources" });
+      }
+      if (exten === "DrawingBoard") {
         this.setState({ active: "Drawing Board" });
       }
       if (exten === "Profile") {
@@ -48,7 +73,7 @@ class LogoutNavbar extends Component {
     const refreshToken = localStorage.getItem("userRefreshToken");
     axios({
       method: "DELETE",
-      url: "https://codeitoutserver.herokuapp.com/api/user/logout-refreshToken",
+      url: `${process.env.REACT_APP_SERVER}/api/user/logout-refreshToken`,
       data: {
         refreshToken: refreshToken,
       },
@@ -164,7 +189,7 @@ class LogoutNavbar extends Component {
                 <hr className="d-md-none"></hr>{" "}
                 <li
                   className={
-                    this.state.active === "Resources"
+                    this.state.active === "Profile"
                       ? "nav-item mx-3 px-3 active"
                       : "nav-item mx-3 px-3"
                   }

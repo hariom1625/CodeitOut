@@ -1,299 +1,298 @@
 .badge {
-      color: #000;
+  color: #000;
 }
 
 .editor {
-      margin-top: 50vh;
+  margin-top: 50vh;
 }
 
 .language {
-      display: inline;
-      width: 150px;
+  display: inline;
+  width: 150px;
 }
 
 .compiler-chck {
-      margin-top: 120px;
+  margin-top: 120px;
 }
 
 .prob-name-com {
-      margin-left: 60px;
-      font-size: 1.7rem;
+  margin-left: 60px;
+  font-size: 1.7rem;
 }
 
 .heading {
-      font-size: 20px;
+  font-size: 20px;
 }
 
 .correct {
-      color: #28df99;
-      font-size: 1.8rem;
+  color: #28df99;
+  font-size: 1.8rem;
 }
 
 .wrong {
-      color: #e40017;
-      font-size: 1.8rem;
+  color: #e40017;
+  font-size: 1.8rem;
 }
 
 .verdict-text {
-      font-family: 'Roboto';
-      font-size: 1.8rem;
-      margin-left: 10px;
+  font-family: "Roboto";
+  font-size: 1.8rem;
+  margin-left: 10px;
 }
 
 .verdict-def {
-      color: #000;
-      font-family: 'Roboto';
-      font-size: 2rem;
-      margin-left: 1px;
+  color: #000;
+  font-family: "Roboto";
+  font-size: 2rem;
+  margin-left: 1px;
 }
 
 .verdict-cont {
-margin-top: 20px;
-      border-style: solid;
-      margin-right: 70%;
-      background-color: #FBFBFD;
-      width: 400px;
-      margin-left: 10px;
-      line-height: 100px;
-      height: 100px;
+  margin-top: 20px;
+  border-style: solid;
+  margin-right: 70%;
+  background-color: #fbfbfd;
+  width: 400px;
+  margin-left: 10px;
+  line-height: 100px;
+  height: 100px;
 }
 
 .source {
-      background-color: #0f1123;
-      color: #f5f4f4;
-      width: 50vw;
-      height: 60vh;
-      resize: none;
-      font-size: 5rem !important;
+  background-color: #0f1123;
+  color: #f5f4f4;
+  width: 50vw;
+  height: 60vh;
+  resize: none;
+  font-size: 5rem !important;
 }
 
 .cc-input {
-      background-color: #1E1E1E;
-      color: #f5f4f4;
-      margin-right: 0;
-      width: 500px;
-      height: 300px;
-      margin-left: 20px;
-      margin-top: 8px;
-      resize: none;
+  background-color: #1e1e1e;
+  color: #f5f4f4;
+  margin-right: 0;
+  width: 500px;
+  height: 300px;
+  margin-left: 20px;
+  margin-top: 8px;
+  resize: none;
 }
 
 /* <textarea required="required" name="solution" id="source" className="source" onChange={this.input} value={this.state.input}></textarea> */
 textarea {
-      padding-left: 20px;
-      scroll-behavior: smooth;
+  padding-left: 20px;
+  scroll-behavior: smooth;
 }
 
 .cc-output {
-      background-color: #1E1E1E;
-      color: #f5f4f4;
-      width: 500px;
-      height: 300px;
-      margin-right: 0;
-      margin-left: 20px;
-      margin-top: 8px;
-      resize: none;
+  background-color: #1e1e1e;
+  color: #f5f4f4;
+  width: 500px;
+  height: 300px;
+  margin-right: 0;
+  margin-left: 20px;
+  margin-top: 8px;
+  resize: none;
 }
 
 .run-icon {
-      margin-right: 10px;
+  margin-right: 10px;
 }
 
 .cc-run-btn {
-      margin: 40px 20px 40px 0;
+  margin: 40px 20px 40px 0;
 }
 
 .source-logo {
-      margin-left: 10px;
+  margin-left: 10px;
 }
 
 .cc-language-opt {
-      font-size: 1.4rem;
-      margin: 50px 20px 50px 0;
+  font-size: 1.4rem;
+  margin: 50px 20px 50px 0;
 }
 
 .cc-heading {
-      margin-top: 10vh;
-      font-size: 1.7rem;
-      background-color: #000 !important;
-      color: #f5f4f4 !important;
-      margin-left: 20px;
-      margin-bottom: 10px;
+  margin-top: 10vh;
+  font-size: 1.7rem;
+  background-color: #000 !important;
+  color: #f5f4f4 !important;
+  margin-left: 20px;
+  margin-bottom: 10px;
 }
 
 .cc-heading-1 {
-      margin-top: 5vh;
-      font-size: 1.7rem;
-      background-color: #000 !important;
-      color: #f5f4f4 !important;
-      margin-left: 20px;
-      margin-bottom: 10px;
+  margin-top: 5vh;
+  font-size: 1.7rem;
+  background-color: #000 !important;
+  color: #f5f4f4 !important;
+  margin-left: 20px;
+  margin-bottom: 10px;
 }
 
 .cc-heading-2 {
-      margin-top: 10vh;
-      font-size: 1.7rem;
-      background-color: #000 !important;
-      color: #f5f4f4 !important;
-      margin-bottom: 10px;
+  margin-top: 10vh;
+  font-size: 1.7rem;
+  background-color: #000 !important;
+  color: #f5f4f4 !important;
+  margin-bottom: 10px;
 }
 
 .input-btn {
-      margin-left: 10px;
+  margin-left: 10px;
 }
-.instruct-link{
-font-size: 1.2rem;
-color: #f5f4f4;
+.instruct-link {
+  font-size: 1.2rem;
+  color: #f5f4f4;
 }
-.instruct-link:hover{
-font-size: 1.2rem;
-color: #f5f4f4;
+.instruct-link:hover {
+  font-size: 1.2rem;
+  color: #f5f4f4;
 }
-.instruct-btn{
-margin-top: 50px;
-      margin-left: 5px;
+.instruct-btn {
+  margin-top: 50px;
+  margin-left: 5px;
+}
 
-}
-
-@media (max-width:1199px) {
-
-      /* .react-monaco-editor-container{
+@media (max-width: 1199px) {
+  /* .react-monaco-editor-container{
 width:200px!important;
 } */
-      .cc-input {
-            width: 400px;
-            height: 300px;
-            margin-left: 0;
-      }
+  .cc-input {
+    width: 400px;
+    height: 300px;
+    margin-left: 0;
+  }
 
-      .cc-output {
-            width: 400px;
-            height: 300px;
-            margin-left: 0;
-      }
+  .cc-output {
+    width: 400px;
+    height: 300px;
+    margin-left: 0;
+  }
 
-      .badge-in {
-            margin-left: 0;
-      }
+  .badge-in {
+    margin-left: 0;
+  }
 }
 
-@media (max-width:1050px) {
-.cc-heading-2{
-font-size: 1.2rem;
+@media (max-width: 1050px) {
+  .cc-heading-2 {
+    font-size: 1.2rem;
+  }
+  .cc-input {
+    width: 320px;
+    height: 250px;
+    margin-left: 0;
+  }
+
+  .cc-output {
+    width: 320px;
+    height: 250px;
+    margin-left: 0;
+  }
+
+  .badge-in {
+    margin-left: 0;
+  }
+  .verdict-def {
+    font-size: 1.4rem;
+  }
+  .verdict-text {
+    margin-left: 3px;
+    font-size: 1.4rem;
+  }
+  .correct,
+  .wrong {
+    font-size: 1.4rem;
+  }
+
+  .verdict-cont {
+    margin-left: 15px;
+    margin-top: 50px;
+    line-height: 70px;
+    width: 300px;
+    height: 80px;
+  }
+  .instruct-btn {
+    margin-top: 50px;
+    margin-left: 5px;
+  }
 }
-      .cc-input {
-            width: 320px;
-            height: 250px;
-            margin-left: 0;
-      }
 
-      .cc-output {
-            width: 320px;
-            height: 250px;
-            margin-left: 0;
-      }
-
-      .badge-in {
-            margin-left: 0;
-      }
-      .verdict-def {
-
-            font-size: 1.4rem;
-      }
-
-      .verdict-cont {
-margin-left: 15px;
-margin-top: 50px;
-            line-height:70px;
-
-            width: 200px;
-            height: 80px;
-      }
-      .instruct-btn{
-      margin-top: 50px;
-            margin-left: 5px;
-
-      }
-
-}
-
-@media (max-width:700px) {
-
-      /* .react-monaco-editor-container{
+@media (max-width: 700px) {
+  /* .react-monaco-editor-container{
 width:200px!important;
 } */
-      .row-editor {
-            margin-top: 30px;
-      }
+  .row-editor {
+    margin-top: 30px;
+  }
 
-      .cc-run-btn {
-            margin: 10px 20px 10px 0;
-            padding: 5px 8px;
-            width: auto;
-            height: auto;
-      }
+  .cc-run-btn {
+    margin: 10px 20px 10px 0;
+    padding: 5px 8px;
+    width: auto;
+    height: auto;
+  }
 
-      .source-logo {
-            margin-left: 10px;
-      }
+  .source-logo {
+    margin-left: 10px;
+  }
 
-      .language-opt {
-            font-size: 1.2rem;
-            margin: 80px 20px 50px 0;
-      }
+  .language-opt {
+    font-size: 1.2rem;
+    margin: 80px 20px 50px 0;
+  }
 
-      .language {
-            width: auto;
-            font-size: 0.8rem;
-      }
+  .language {
+    width: auto;
+    font-size: 0.8rem;
+  }
 
-      .cc-input {
-            width: 300px;
-            height: 300px;
-            margin-left: 0;
-      }
+  .cc-input {
+    width: 300px;
+    height: 300px;
+    margin-left: 0;
+  }
 
-      .cc-output {
-            width: 300px;
-            height: 300px;
-            margin-left: 0;
-      }
+  .cc-output {
+    width: 300px;
+    height: 300px;
+    margin-left: 0;
+  }
 
-      .badge-in {
-            margin-left: 0;
-      }
+  .badge-in {
+    margin-left: 0;
+  }
 }
 
-@media (max-width:350px) {
-      .cc-input {
-            width: 280px;
-            height: 300px;
-            margin-left: 0;
-      }
+@media (max-width: 350px) {
+  .cc-input {
+    width: 280px;
+    height: 300px;
+    margin-left: 0;
+  }
 
-      .cc-output {
-            width: 280px;
-            height: 300px;
-            margin-left: 0;
-      }
+  .cc-output {
+    width: 280px;
+    height: 300px;
+    margin-left: 0;
+  }
 
-      .instruct-btn{
-
-            margin-left: 10px;
-
-      }
+  .instruct-btn {
+    margin-left: 10px;
+  }
 }
 
-@media (max-width:300px) {
-      .cc-input {
-            width: 250px;
-            height: 280px;
-            margin-left: 0;
-      }
+@media (max-width: 300px) {
+  .cc-input {
+    width: 250px;
+    height: 280px;
+    margin-left: 0;
+  }
 
-      .cc-output {
-            width: 250px;
-            height: 280px;
-            margin-left: 0;
-      }
+  .cc-output {
+    width: 250px;
+    height: 280px;
+    margin-left: 0;
+  }
 }

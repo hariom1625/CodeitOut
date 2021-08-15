@@ -1,19 +1,18 @@
-import React from 'react';
-import './SignUp.css';
-import axios from 'axios'
-import './SignIn.css';
-import {Redirect} from 'react-router-dom';
-import Notifications, {notify} from 'react-notify-toast';
-import { ToastContainer,toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import React from "react";
+import "./SignUp.css";
+import axios from "axios";
+import "./SignIn.css";
+import { Redirect } from "react-router-dom";
+import Notifications, { notify } from "react-notify-toast";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-let loggedIn = true
+let loggedIn = true;
 
 let customNotify = {
-background:"#000",
-text:"#fff"
-
-}
+  background: "#000",
+  text: "#fff",
+};
 
 // function refreshPage ()  {
 // setTimeout( () => {
@@ -21,104 +20,124 @@ text:"#fff"
 // },50);
 // console.log("Reload")
 // }
-toast.configure()
+toast.configure();
 
 class ForgotPwd extends React.Component {
+  constructor(props) {
+    super(props);
+    const userLoggedtoken = localStorage.getItem("userLoggedToken");
+    if (userLoggedtoken === null) {
+      loggedIn = false;
+    }
+    this.state = {
+      email: "",
+      password: "",
+      cnfmPassword: "",
+      resp: false,
+      loggedIn,
+    };
 
-      constructor(props) {
+    // this.onChange = this.onChange.bind(this)
+    // this.onFormSubmit = this.onFormSubmit.bind(this)
+  }
 
-            super(props);
-            const userLoggedtoken = localStorage.getItem("userLoggedToken")
-           if(userLoggedtoken===null){
-           loggedIn = false
-           }
-      this.state = {
-                  email: '',
-                  password: '',
-cnfmPassword:'',
-resp:false,
-loggedIn
-            }
+  onChange = (event) => {
+    event.preventDefault();
 
-            // this.onChange = this.onChange.bind(this)
-            // this.onFormSubmit = this.onFormSubmit.bind(this)
-      }
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  };
 
-      onChange = (event)=>{
-            event.preventDefault()
+  onFormSubmit = (e) => {
+    e.preventDefault();
+    const { email, password, cnfmPassword } = this.state;
 
-            this.setState({
-                  [event.target.name]: event.target.value
-            })
-      }
+    const resetPassword = { email, password, cnfmPassword };
 
-      onFormSubmit = (e) => {
-            e.preventDefault()
-            const {email, password,cnfmPassword} = this.state
+    axios
+      .put(
+        `${process.env.REACT_APP_SERVER}/api/User/forgotPwd`,
+        resetPassword,
+        {
+          headers: {
+            authorization: `Bearer ${process.env.REACT_APP_TC_TOKEN}`,
+          },
+        }
+      )
+      .then((res) => {
+        this.setState({ resp: true });
+      })
+      .catch((err) => {
+        notify.show(err.response.data, "custom", 2000, customNotify);
+      });
+  };
 
-            const resetPassword = {email,password,cnfmPassword}
+  notify = () => {
+    toast("Hello World.....!!!!!");
+  };
+  render() {
+    if (this.state.resp === true) {
+      return <Redirect to="forgotVerify" />;
+    }
+    return (
+      <div className="signin">
+        <Notifications />
+        <ToastContainer />
+        <div className="outer">
+          <div className="inner">
+            <form onSubmit={this.onFormSubmit}>
+              <h3>Reset Password</h3>
 
-            axios.put('https://codeitoutserver.herokuapp.com/api/User/forgotPwd',resetPassword,{
+              <div className="form-group">
+                <label>E-mail</label>
+                <input
+                  type="email"
+                  name="email"
+                  className="form-control "
+                  value={this.state.email}
+                  onChange={this.onChange}
+                  placeholder="Username"
+                />
+              </div>
 
-            headers:{
-            authorization:`Bearer ${process.env.REACT_APP_TC_TOKEN}`
-            }
-            })
-            .then((res) =>{
+              <div className="form-group">
+                <label>Password</label>
+                <input
+                  type="text"
+                  name="password"
+                  className="form-control "
+                  value={this.state.password}
+                  onChange={this.onChange}
+                  placeholder="Password"
+                />
+              </div>
+              <div className="form-group">
+                <label>Confirm Password</label>
+                <input
+                  type="text"
+                  name="cnfmPassword"
+                  className="form-control "
+                  value={this.state.cnfmPassword}
+                  onChange={this.onChange}
+                  placeholder="Confirm Password"
+                />
+              </div>
 
-this.setState({resp:true})
-})
-            .catch(err =>{
-notify.show(err.response.data,"custom", 2000, customNotify)
-
-
-            });
-
-      }
-
-notify = () =>{
-toast("Hello World.....!!!!!")
-}
-      render() {
-if(this.state.resp===true){
-return(
-<Redirect to="forgotVerify" />
-)
-}
-      return(
-<div className="signin">
-      <Notifications/>
-      <ToastContainer/>
-      <div className="outer">
-      <div className="inner">
-            <form  onSubmit= {this.onFormSubmit}>
-
-                            <h3>Reset Password</h3>
-
-                            <div className="form-group">
-                                <label>E-mail</label>
-                                      <input type="email" name="email" className="form-control " value={this.state.email} onChange={this.onChange} placeholder="Username"/>
-                            </div>
-
-                            <div className="form-group">
-                                <label>Password</label>
-                                      <input type="text" name="password" className="form-control " value={this.state.password} onChange={this.onChange} placeholder="Password"/>
-                            </div>
-                            <div className="form-group">
-                                <label>Confirm Password</label>
-                                      <input type="text" name="cnfmPassword" className="form-control " value={this.state.cnfmPassword} onChange={this.onChange} placeholder="Confirm Password"/>
-                            </div>
-
-
-                            <button onClick={this.notify} className="btn  btn-lg btn-dark btn-block" type="submit" name="signup">Sign In</button>
-
-                        </form>
+              <button
+                onClick={this.notify}
+                className="btn  btn-lg btn-dark btn-block"
+                type="submit"
+                name="signup"
+              >
+                Sign In
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
-      </div>
-</div>
-);
-
-      }
+    );
+  }
 }
 
 export default ForgotPwd;

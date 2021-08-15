@@ -52,7 +52,7 @@ class SignUp extends React.Component {
     const user = { firstname, lastname, email, password, username, resetPwd };
 
     axios
-      .post("https://codeitoutserver.herokuapp.com/api/User/signup", user, {
+      .post(`${process.env.REACT_APP_SERVER}/api/User/signup`, user, {
         headers: {
           authorization: `Bearer ${process.env.REACT_APP_TC_TOKEN}`,
         },
@@ -65,7 +65,6 @@ class SignUp extends React.Component {
       .catch((err) => {
         // const res = err.response.data;
         console.log(err);
-        alert("HEY");
       });
   };
   render() {

@@ -1,53 +1,74 @@
-.admin-login{
-text-align: center;
-margin-left: auto;
-margin-right: auto;
+.admin-login {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
-.email-input{
-margin-top: 20px;
-margin-left: auto;
-margin-right: auto;
-width:400px;
+.email-input {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
 }
-.pass-input{
-      margin-top: 20px;
+.pass-input {
+  margin-top: 20px;
 
-      margin-left: auto;
-      margin-right: auto;
-width:400px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
 }
-.admin-btn{
-      margin-top: 20px;
-
-      margin-left: auto;
-      margin-right: auto;
-      width:100px;
-
+.admin-btn {
+  margin-top: 20px;
+  background-color: #52057b;
+  border-color: #52057b;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
 }
-.logout-btn{
-      margin-top: 50vh;
-      width:100px;
-      margin-right: 10vw;
-      margin-left: 80vw;
-      text-align: right;
-
+.admin-btn:hover {
+  background-color: #52057b;
+  border-color: #52057b;
 }
-.login-page-btn{
-      margin-top: 50vh;
-      width:140px;
-      margin-right: 10vw;
-      margin-left: 80vw;
-      text-align: right;
-
+.admin-logout-btn {
+  background-color: #52057b;
+  border-color: #52057b;
+  width: 100px;
+  margin-top: 20px;
+  margin-right: 10vw;
+  margin-left: 80vw;
+  text-align: right;
+  float: right;
 }
-.label-form{
-font-size: 1.2rem;
-margin-left: 50px;
-margin-bottom: 40px;
+.admin-logout-btn:hover {
+  background-color: #52057b;
+  border-color: #52057b;
 }
-.adminpage-input{
-width:500px;
-margin-left: 50px;
-margin-bottom: 40px;
+.login-page-btn {
+  margin-top: 50vh;
+  width: 140px;
+  margin-right: 10vw;
+  margin-left: 80vw;
+  text-align: right;
+}
+.label-form {
+  font-size: 1.2rem;
+  margin-left: 50px;
+  margin-bottom: 40px;
+}
+.adminpage-input {
+  width: 500px;
+  margin-left: 50px;
+  margin-bottom: 40px;
+}
 
+.heading-prob {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  text-decoration: underline;
+}
+
+.admin-container {
+  margin-left: auto;
+  margin-right: auto;
 }

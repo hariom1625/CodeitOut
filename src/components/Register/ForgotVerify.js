@@ -34,7 +34,7 @@ class ForgotVerify extends React.Component {
 
     axios
       .put(
-        "https://codeitoutserver.herokuapp.com/api/User/forgotPwdVerify",
+        `${process.env.REACT_APP_SERVER}/api/User/forgotPwdVerify`,
         sendOtp,
         {
           headers: {
