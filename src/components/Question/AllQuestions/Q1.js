@@ -28,7 +28,7 @@ class Q1 extends React.Component {
     const addr = str.substring(13);
 
     axios
-      .get(`http://localhost:4000/api/question/${addr}`, {
+      .get(`${process.env.REACT_APP_SERVER}/api/question/${addr}`, {
         headers: {
           authorization: `Bearer ${process.env.REACT_APP_TC_TOKEN}`,
         },
@@ -57,7 +57,7 @@ class Q1 extends React.Component {
       )
       .then((res) => {
         axios
-          .get(`http://localhost:4000/api/question/answer${addr}`, {
+          .get(`${process.env.REACT_APP_SERVER}/api/question/answer${addr}`, {
             headers: {
               Authorization: `Bearer ${res.data.accessToken}`,
             },
