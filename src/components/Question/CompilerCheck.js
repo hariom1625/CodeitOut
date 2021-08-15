@@ -17,8 +17,8 @@ class Compiler extends React.Component {
       answers: [],
       tc: 0,
       ans: 0,
-      verdict: "Correct Answer",
-      icon: "far fa-check-circle correct fa-3x",
+      verdict: "",
+      icon: "",
       width: 620,
       height: 600,
     };
