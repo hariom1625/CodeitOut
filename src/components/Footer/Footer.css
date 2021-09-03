@@ -1,7 +1,17 @@
 body {
   background: #fbfbfd;
 }
+.issue-btn {
+  float: right;
+}
+.github-prof {
+  color: #8a92ae;
+  font-weight: 400;
+}
 
+.fa-bug {
+  margin-left: 5px;
+}
 .new_footer_area {
   background: #fbfbfd;
 }
