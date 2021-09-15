@@ -36,18 +36,21 @@ class LoggedOut extends React.Component {
     };
   }
   componentDidMount() {
-    axios
-      .get(`${process.env.REACT_APP_SERVER}/api/User/login-success`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("userLoggedToken")}`,
-        },
-      })
-      .then((res) => {
-        this.setState({ loggedIn: res.data });
-      })
-      .catch((err) => {
-        this.setState({ loggedIn: false });
-      });
+    const token = localStorage.getItem("userLoggedToken");
+    if (token) {
+      axios
+        .get(`${process.env.REACT_APP_SERVER}/api/User/login-success`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          this.setState({ loggedIn: res.data });
+        })
+        .catch((err) => {
+          this.setState({ loggedIn: false });
+        });
+    }
 
     window.scrollTo(0, 0);
   }
@@ -106,9 +109,3 @@ class LoggedOut extends React.Component {
 }
 
 export default LoggedOut;
-// <Route  path={`/Q${x}`} component={ScrollToTop(Q1)}/>
-// <GoogleLogin buttonText="Login" onSuccess={this.responseGoogle} onFailure={this.responseGoogle} cookiePolicy={'single_host_origin'}/>
-// responseGoogle = (response) => {
-//       console.log(response);
-//       console.log(response.profileObj);
-// }

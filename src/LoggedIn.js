@@ -36,23 +36,6 @@ class LoggedIn extends React.Component {
     };
   }
   componentDidMount() {
-    // axios.get('https://codeitoutserver.herokuapp.com/api/User/login-success', {
-    //       headers: {
-    //             Authorization: `Bearer ${localStorage.getItem("userLoggedToken")}`
-    //       }
-    //
-    // }).then((res) => {
-    //       this.setState({loggedIn:res.data})
-    //
-    //
-    //        console.log(this.state.userDetail)
-    //
-    // }).catch((err) => {
-    //       this.setState({loggedIn:false})
-    //       console.log(err)
-    //
-    // })
-
     window.scrollTo(0, 0);
   }
 
@@ -111,12 +94,3 @@ class LoggedIn extends React.Component {
 }
 
 export default LoggedIn;
-// <Route exact path="/Admin/Login" component={ScrollToTop(Login)}/>
-// <Route exact path="/AdminPage" component={ScrollToTop(AdminPage)}/>
-// <Route  path={`/Q${x}`} component={ScrollToTop(Q1)}/>
-// <GoogleLogin buttonText="Login" onSuccess={this.responseGoogle} onFailure={this.responseGoogle} cookiePolicy={'single_host_origin'}/>
-// responseGoogle = (response) => {
-//       console.log(response);
-//       console.log(response.profileObj);
-// }
-// <Route exact path="/SignOut" component={(props) => (<SignOut timestamp={new Date().toString()} {...props}/>)}/>

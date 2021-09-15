@@ -37,18 +37,20 @@ class AdminPage extends React.Component {
 
   componentDidMount() {
     const token = localStorage.getItem("alt");
-    axios
-      .post(`${process.env.REACT_APP_SERVER}/api/admin/verifyAdmin`, token, {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("alt")}`,
-        },
-      })
-      .then((res) => {
-        this.setState({ loggedIn: true });
-      })
-      .catch(() => {
-        this.setState({ loggedIn: false });
-      });
+    if (token) {
+      axios
+        .post(`${process.env.REACT_APP_SERVER}/api/admin/verifyAdmin`, token, {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          this.setState({ loggedIn: true });
+        })
+        .catch(() => {
+          this.setState({ loggedIn: false });
+        });
+    }
   }
 
   onChange = (event) => {

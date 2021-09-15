@@ -11,38 +11,42 @@ class Profile extends React.Component {
 
   componentDidMount() {
     const token1 = localStorage.getItem("userRefreshToken");
-    axios
-      .post(
-        `${process.env.REACT_APP_SERVER}/api/user/token`,
-        { token1 },
-        {
-          headers: {
-            authorization: `Bearer ${process.env.REACT_APP_TC_TOKEN}`,
-          },
-        }
-      )
-      .then((res) => {
-        axios
-          .get(`${process.env.REACT_APP_SERVER}/api/User/profile`, {
+    if (token1) {
+      axios
+        .post(
+          `${process.env.REACT_APP_SERVER}/api/user/token`,
+          { token1 },
+          {
             headers: {
-              Authorization: `Bearer ${res.data.accessToken}`,
+              authorization: `Bearer ${process.env.REACT_APP_TC_TOKEN}`,
             },
-          })
-          .then((res) => {
-            this.setState({ userDetail: res.data, quesol: res.data[0].queset });
-            console.log(this.state.userDetail);
-            if (res.data > 0) {
+          }
+        )
+        .then((res) => {
+          axios
+            .get(`${process.env.REACT_APP_SERVER}/api/User/profile`, {
+              headers: {
+                Authorization: `Bearer ${res.data.accessToken}`,
+              },
+            })
+            .then((res) => {
+              this.setState({
+                userDetail: res.data,
+                quesol: res.data[0].queset,
+              });
+              if (res.data > 0) {
+                this.setState({ loaded: true });
+              } else {
+                this.setState({ loaded: true });
+              }
+              window.scrollTo(0, 0);
+            })
+            .catch((err) => {
               this.setState({ loaded: true });
-            } else {
-              this.setState({ loaded: true });
-            }
-            window.scrollTo(0, 0);
-          })
-          .catch((err) => {
-            this.setState({ loaded: true });
-          });
-      })
-      .catch((err) => {});
+            });
+        })
+        .catch((err) => {});
+    }
   }
   render() {
     const prof = this.state.userDetail.map((detail, idx) => {

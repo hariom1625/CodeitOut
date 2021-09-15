@@ -102,7 +102,7 @@ class Login extends React.Component {
             onChange={this.onChange}
             placeholder="Username"
             required
-            autofocus
+            autoFocus
           />
           <input
             type="password"
@@ -112,7 +112,7 @@ class Login extends React.Component {
             onChange={this.onChange}
             placeholder="Password "
             required
-            autofocus
+            autoFocus
           />
 
           <button
