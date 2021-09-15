@@ -48,11 +48,9 @@ class Login extends React.Component {
       username,
       password,
     };
-    console.log(adminLogin);
     axios
       .post(`${process.env.REACT_APP_SERVER}/api/admin/adminLogin`, adminLogin)
       .then((res) => {
-        console.log(res);
         if (res.data > 0) {
           this.setState({ loaded: true });
         } else {
