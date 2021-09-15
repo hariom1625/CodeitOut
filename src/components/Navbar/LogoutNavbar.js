@@ -22,8 +22,6 @@ class LogoutNavbar extends Component {
     if (ext.length > 22) {
       const n = ext.lastIndexOf("/");
       const exten = ext.substring(n + 1);
-      console.log(exten);
-
       if (exten === "questionlist") {
         this.setState({ active: "Questions List" });
       }
