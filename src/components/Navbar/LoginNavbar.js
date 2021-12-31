@@ -137,10 +137,7 @@ class LoginNavbar extends Component {
                   Resources
                 </li>
               </a>
-              <a
-                href="/DrawingBoard
-                id="navLink"
-              >
+              <a href="/DrawingBoard id="navLink">
                 <hr className="d-md-none"></hr>{" "}
                 <li
                   className={
