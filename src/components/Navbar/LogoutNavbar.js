@@ -164,8 +164,6 @@ class LogoutNavbar extends Component {
               </a>
               <a
                 href="/DrawingBoard"
-                target="_blank"
-                rel="noopener noreferrer"
                 id="navLink"
               >
                 <hr className="d-md-none"></hr>{" "}
