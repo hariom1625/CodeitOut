@@ -138,9 +138,7 @@ class LoginNavbar extends Component {
                 </li>
               </a>
               <a
-                href="/DrawingBoard"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/DrawingBoard
                 id="navLink"
               >
                 <hr className="d-md-none"></hr>{" "}
